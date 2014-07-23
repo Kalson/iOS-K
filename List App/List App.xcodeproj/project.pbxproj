@@ -19,6 +19,7 @@
 		26455E89197FFAEC00617FC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26455E71197FFAEC00617FC7 /* UIKit.framework */; };
 		26455E91197FFAEC00617FC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26455E8F197FFAEC00617FC7 /* InfoPlist.strings */; };
 		26455E93197FFAEC00617FC7 /* List_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26455E92197FFAEC00617FC7 /* List_AppTests.m */; };
+		26455E9F1980060E00617FC7 /* MFLTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26455E9E1980060E00617FC7 /* MFLTableTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		26455E8E197FFAEC00617FC7 /* List AppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "List AppTests-Info.plist"; sourceTree = "<group>"; };
 		26455E90197FFAEC00617FC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		26455E92197FFAEC00617FC7 /* List_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = List_AppTests.m; sourceTree = "<group>"; };
+		26455E9D1980060E00617FC7 /* MFLTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLTableTableViewController.h; sourceTree = "<group>"; };
+		26455E9E1980060E00617FC7 /* MFLTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLTableTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 		26455E61197FFAEC00617FC7 = {
 			isa = PBXGroup;
 			children = (
+				26455E9C1980056300617FC7 /* Controllers */,
 				26455E73197FFAEC00617FC7 /* List App */,
 				26455E8C197FFAEC00617FC7 /* List AppTests */,
 				26455E6C197FFAEC00617FC7 /* Frameworks */,
@@ -142,6 +146,15 @@
 				26455E8F197FFAEC00617FC7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26455E9C1980056300617FC7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				26455E9D1980060E00617FC7 /* MFLTableTableViewController.h */,
+				26455E9E1980060E00617FC7 /* MFLTableTableViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26455E9F1980060E00617FC7 /* MFLTableTableViewController.m in Sources */,
 				26455E7E197FFAEC00617FC7 /* MFLAppDelegate.m in Sources */,
 				26455E7A197FFAEC00617FC7 /* main.m in Sources */,
 			);
