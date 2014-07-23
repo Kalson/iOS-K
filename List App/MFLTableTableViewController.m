@@ -10,7 +10,17 @@
 
 @interface MFLTableTableViewController ()
 
-@property (nonatomic) NSArray *listItems;
+@property (nonatomic) NSArray *days;
+@property (nonatomic) NSArray *students;
+@property (nonatomic) NSArray *colors;
+@property (nonatomic) NSArray *sizes;
+@property (nonatomic) NSArray *info;
+
+// create an array for students - NSStrings
+
+// create an array for colors - UIColors
+
+// create an array for sizes - NSNumbers
 
 @end
 
@@ -22,7 +32,27 @@
     if (self) {
         // Custom initialization
 
-        self.listItems = @[@"Monday",@"Tuesday",@"Wednesday",@"Thursday"];
+        self.days = @[@"Monday",@"Tuesday",@"Wednesday",@"Thursday", @"Friday",@"Saturday",@"Sunday"];
+        self.students = @[@"David Drake",@"Meritt Tidwell", @"Joseph Lau", @"Jaime Connor", @"Steve Sneller",@"Jeremy Butler", @"Nick Peterson"];
+        self.colors = @[[UIColor redColor],[UIColor orangeColor], [UIColor yellowColor],[UIColor greenColor],[UIColor colorWithRed:0.243f green:0.643f blue:0.502f alpha:1.0f], [UIColor blueColor], [UIColor purpleColor]];
+        self.sizes = @[@"20",@"22",@"24",@"26",@"28",@"30",@"32"];
+        
+        // add the last 3 days
+        
+        // set 7 students
+        
+        // set 7 colors
+        
+        // set 7 numbers (20 - 40)
+        
+     /*   self.info = @[
+                      @{@"day": @"Monday",
+                        @"color":[UIColor redColor],
+                        @"student":@"David Drake",
+                        @"size":@"20"},
+                      @{@"day": @"Tuesday",
+                        @"color": [UIColor orangeColor]}];
+        */
 
     
     }
@@ -40,12 +70,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+    
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -54,21 +80,37 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.listItems.count;
+    return self.days.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     
-    NSString *listItem = [self.listItems objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.days objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [self.students objectAtIndex:indexPath.row];
     
-    listItem = self.listItems[indexPath.row];
-    NSLog(@"listItems = %@",listItem);
+    cell.backgroundColor = [self.colors objectAtIndex:indexPath.row];
+     NSNumber *size = self.sizes[indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:[size intValue]];
     
-    cell.textLabel.text = listItem;
+  //  NSDictionary *infoItem = self.info[indexPath.row];
     
-    cell.backgroundColor = [UIColor greenColor];
+  //  NSString *day = infoItem[@"day"];
+   // UIColor *color = infoItem[@"color"];
+   
+
+   // listItem = self.listItems[indexPath.row];
+ //   NSLog(@"listItems = %@",_days);
+    
+   
+
+    
+    // there is a sub text option that will be set by the student name
+    
+    // set background color to color in array
+    
+    // set the text label font size to a number from the last array
     
     // Configure the cell...
     
@@ -113,15 +155,5 @@
 }
 */
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
