@@ -45,14 +45,17 @@
         
         // set 7 numbers (20 - 40)
         
-     /*   self.info = @[
+        self.info = @[
                       @{@"day": @"Monday",
                         @"color":[UIColor redColor],
                         @"student":@"David Drake",
                         @"size":@"20"},
                       @{@"day": @"Tuesday",
-                        @"color": [UIColor orangeColor]}];
-        */
+                        @"color": [UIColor orangeColor],
+                        @"student":@"Meritt Tidwell",
+                        @"size":@"22"},
+        @{@"day": @"Wednesday"}];
+        
 
     
     }
