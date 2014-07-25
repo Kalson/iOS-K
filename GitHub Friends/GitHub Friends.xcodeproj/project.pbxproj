@@ -21,6 +21,7 @@
 		2668A16B19813F00005CFC90 /* GitHub_FriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2668A16A19813F00005CFC90 /* GitHub_FriendsTests.m */; };
 		2668A17719813F99005CFC90 /* GFATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2668A17619813F99005CFC90 /* GFATableViewController.m */; };
 		2668A17A19814816005CFC90 /* GFATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2668A17919814816005CFC90 /* GFATableViewCell.m */; };
+		26A8E44C1982A7EC0037EAA4 /* GFAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A8E44B1982A7EC0037EAA4 /* GFAViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		2668A17619813F99005CFC90 /* GFATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFATableViewController.m; sourceTree = "<group>"; };
 		2668A17819814816005CFC90 /* GFATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFATableViewCell.h; sourceTree = "<group>"; };
 		2668A17919814816005CFC90 /* GFATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFATableViewCell.m; sourceTree = "<group>"; };
+		26A8E44A1982A7EC0037EAA4 /* GFAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFAViewController.h; sourceTree = "<group>"; };
+		26A8E44B1982A7EC0037EAA4 /* GFAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFAViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				2668A17619813F99005CFC90 /* GFATableViewController.m */,
 				2668A17819814816005CFC90 /* GFATableViewCell.h */,
 				2668A17919814816005CFC90 /* GFATableViewCell.m */,
+				26A8E44A1982A7EC0037EAA4 /* GFAViewController.h */,
+				26A8E44B1982A7EC0037EAA4 /* GFAViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A8E44C1982A7EC0037EAA4 /* GFAViewController.m in Sources */,
 				2668A17719813F99005CFC90 /* GFATableViewController.m in Sources */,
 				2668A15219813F00005CFC90 /* main.m in Sources */,
 				2668A17A19814816005CFC90 /* GFATableViewCell.m in Sources */,
@@ -458,6 +464,7 @@
 				2668A17019813F00005CFC90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2668A17119813F00005CFC90 /* Build configuration list for PBXNativeTarget "GitHub FriendsTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +473,7 @@
 				2668A17319813F00005CFC90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

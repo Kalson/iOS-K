@@ -8,6 +8,7 @@
 
 #import "GFATableViewController.h"
 #import "GFATableViewCell.h"
+#import "GFAViewController.h"
 
 @interface GFATableViewController ()
 
@@ -28,6 +29,7 @@
           
                             @"login": @"joalbright",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/1536630?",
+                            @"html_url": @"https://github.com/joalbright",
                             @"name": @"Jo Albright",
                             @"blog": @"jo2.co",
                             @"location": @"Atlanta, Ga",
@@ -189,6 +191,16 @@
     // Configure the cell...
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"select row at %@",indexPath);
+    GFAViewController *profileView = [[GFAViewController alloc]init];
+    [self.navigationController pushViewController:profileView animated:YES];
+    profileView.view.backgroundColor = [UIColor lightGrayColor];
+    
+    profileView.friendInfo2 = githubFriends[indexPath.row];
 }
 
 /*
