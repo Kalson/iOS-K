@@ -86,8 +86,8 @@
 		2668A13919813F00005CFC90 = {
 			isa = PBXGroup;
 			children = (
-				2668A17419813F7D005CFC90 /* Controllers */,
 				2668A14B19813F00005CFC90 /* GitHub Friends */,
+				2668A17419813F7D005CFC90 /* Controllers */,
 				2668A16419813F00005CFC90 /* GitHub FriendsTests */,
 				2668A14419813F00005CFC90 /* Frameworks */,
 				2668A14319813F00005CFC90 /* Products */,

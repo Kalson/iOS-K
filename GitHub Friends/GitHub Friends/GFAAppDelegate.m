@@ -8,6 +8,7 @@
 
 #import "GFAAppDelegate.h"
 #import "GFATableViewController.h"
+#import "GFATableViewCell.h"
 
 @implementation GFAAppDelegate
 
@@ -17,12 +18,35 @@
     // Override point for customization after application launch.
     
     UINavigationController *nC = [[UINavigationController alloc]initWithRootViewController:[[GFATableViewController alloc]initWithStyle:UITableViewStylePlain]];
+    
+    
+    UINavigationBar *navigationBar = nC.navigationBar;
+    navigationBar.barTintColor = [UIColor redColor];
+    
+    navigationBar.tintColor = [UIColor whiteColor];
+    
+//    GFATableViewController * tVControl = [[GFATableViewController alloc] init];
+//    
+//    
+//    tVControl.searchBar = [[UITextField alloc]initWithFrame:CGRectMake(10, 40, 250, 40)];
+//    tVControl.searchBar.layer.borderWidth = 1;
+//    tVControl.searchBar.placeholder = @"Search";
+//    [tVControl.self.view addSubview:tVControl.searchBar];
+//    UIView *paddingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 20)];
+//    tVControl.searchBar.leftView = paddingView;
+//    tVControl.searchBar.leftViewMode = UITextFieldViewModeAlways;
+//   // tVControl.searchBar.delegate = tVControl;
+//    
+    
+
 
     self.window.rootViewController = nC;
   
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

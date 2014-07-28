@@ -33,6 +33,8 @@
     
     webView = [[UIWebView alloc]initWithFrame:self.view.frame];
     [self.view addSubview:webView];
+    
+    
  
 }
 
@@ -43,6 +45,7 @@
     NSURL *url = [NSURL URLWithString:friendInfo2[@"html_url"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
+    
     
     
     

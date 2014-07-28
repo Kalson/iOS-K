@@ -10,13 +10,14 @@
 #import "GFATableViewCell.h"
 #import "GFAViewController.h"
 
-@interface GFATableViewController ()
+@interface GFATableViewController () <UITextFieldDelegate> 
 
 @end
 
 @implementation GFATableViewController {
     NSMutableArray *githubFriends;
     UIButton *searchButton;
+    
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -31,87 +32,116 @@
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/1536630?",
                             @"html_url": @"https://github.com/joalbright",
                             @"name": @"Jo Albright",
+                            @"gist": @"6",
                             @"blog": @"jo2.co",
                             @"location": @"Atlanta, Ga",
                             @"email": @"me@jo2.co",
-                            @"Followers": @"Followers: 28",
-                            @"Following": @"Following: 43"},
-                          
+                            @"Followers": @"28",
+                            @"Following": @"43"},
                           @{@"name": @"Kalson Kalu",
                             @"location": @"Houston, TX",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/7114996?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 4"},
+                            @"html_url":@"https://github.com/Kalson",
+                            @"gist": @"1",
+                            @"Followers": @"0",
+                            @"Following": @"4"},
                           @{@"name": @"Steve Sneller",
                             @"location": @"Marietta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/8129918?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/ssneller",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Jaime Connor",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/8224727?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/JaimeConnor",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Joseph Lau",
                             @"location": @"San Francisco, CA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/7451830?",
-                            @"Followers": @"Followers: 1",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/JosephLauSF",
+                            @"gist": @"1",
+                            @"Followers": @"1",
+                            @"Following": @"0"},
                           @{@"name": @"Jeremy Butler",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/7903562?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/jeremycbutler",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Shane Sniteman",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/4793213?",
-                            @"Followers": @"Followers: 22",
-                            @"Following": @"Following: 35"},
+                            @"html_url": @"https://github.com/ssniteman",
+                            @"gist": @"0",
+                            @"Followers": @"22",
+                            @"Following": @"35"},
                           @{@"name": @"Eric Seidel",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/8224720?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/EWJSeidel",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Eric Williams",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/8224735?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/ericstephen",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Arthur Boia",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/8224728?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/Anterio",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Nick",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/8224722?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/npeterson213",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Daniel Merrill",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/8224723?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/dmerrill88",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Josh Hendershot",
                             @"location": @"Seattle, WA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/7279926?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/jhend11",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Rene Candelier",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/4494771?",
-                            @"Followers": @"Followers: 1",
-                            @"Following": @"Following: 2"},
+                            @"html_url": @"https://github.com/renecandelier",
+                            @"gist": @"0",
+                            @"Followers": @"1",
+                            @"Following": @"2"},
                           @{@"name": @"Meritt Tidwell",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/7989843?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/mertid",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                           @{@"name": @"Katlyn Schawaebe",
                             @"location": @"Atlanta, GA",
                             @"avatar_url": @"https://avatars.githubusercontent.com/u/6909470?",
-                            @"Followers": @"Followers: 0",
-                            @"Following": @"Following: 0"},
+                            @"html_url": @"https://github.com/schwaebek",
+                            @"gist": @"0",
+                            @"Followers": @"0",
+                            @"Following": @"0"},
                         
                            
                             ] mutableCopy];
@@ -126,15 +156,19 @@
     
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
     self.tableView.tableHeaderView = headerView;
+//    
     
-    UITextField *searchBar = [[UITextField alloc]initWithFrame:CGRectMake(10, 40, 250, 40)];
-    searchBar.layer.borderWidth = 1;
-    searchBar.placeholder = @"Search";
-    [self.view addSubview:searchBar];
+    self.searchBar = [[UITextField alloc]initWithFrame:CGRectMake(10, 40, 250, 40)];
+    self.searchBar.layer.borderWidth = 1;
+    self.searchBar.placeholder = @"Search";
+    [self.view addSubview:self.searchBar];
     UIView *paddingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 20)];
-    searchBar.leftView = paddingView;
-    searchBar.leftViewMode = UITextFieldViewModeAlways;
-    
+    self.searchBar.leftView = paddingView;
+    self.searchBar.leftViewMode = UITextFieldViewModeAlways;
+    self.searchBar.delegate = self;
+
+   
+
     searchButton = [[UIButton alloc]initWithFrame:CGRectMake(270, 40, 40, 40)];
     [self.view addSubview:searchButton];
     searchButton.backgroundColor = [UIColor grayColor];
@@ -146,6 +180,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+#pragma mark - Helper Methods
+    
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)searchbarWasPressed{
@@ -199,8 +241,9 @@
     GFAViewController *profileView = [[GFAViewController alloc]init];
     [self.navigationController pushViewController:profileView animated:YES];
     profileView.view.backgroundColor = [UIColor lightGrayColor];
-    
     profileView.friendInfo2 = githubFriends[indexPath.row];
+    
+   
 }
 
 /*

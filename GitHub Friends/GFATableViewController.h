@@ -10,4 +10,7 @@
 
 @interface GFATableViewController : UITableViewController
 
+@property (nonatomic) UITextField *searchBar;
+
+
 @end
