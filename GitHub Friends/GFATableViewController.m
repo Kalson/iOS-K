@@ -9,142 +9,40 @@
 #import "GFATableViewController.h"
 #import "GFATableViewCell.h"
 #import "GFAViewController.h"
+#import "GRAGithubRequest.h"
 
-@interface GFATableViewController () <UITextFieldDelegate> 
+
+@interface GFATableViewController () <UITextFieldDelegate>
 
 @end
 
 @implementation GFATableViewController {
     NSMutableArray *githubFriends;
     UIButton *searchButton;
-    
+    UIImageView *searchButtonImage;
 }
+
+
+// add an object to the beginning
+// add an object to the end
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        githubFriends = [@[
-                          @{
-          
-                            @"login": @"joalbright",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/1536630?",
-                            @"html_url": @"https://github.com/joalbright",
-                            @"name": @"Jo Albright",
-                            @"gist": @"6",
-                            @"blog": @"jo2.co",
-                            @"location": @"Atlanta, Ga",
-                            @"email": @"me@jo2.co",
-                            @"Followers": @"28",
-                            @"Following": @"43"},
-                          @{@"name": @"Kalson Kalu",
-                            @"location": @"Houston, TX",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/7114996?",
-                            @"html_url":@"https://github.com/Kalson",
-                            @"gist": @"1",
-                            @"Followers": @"0",
-                            @"Following": @"4"},
-                          @{@"name": @"Steve Sneller",
-                            @"location": @"Marietta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/8129918?",
-                            @"html_url": @"https://github.com/ssneller",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Jaime Connor",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/8224727?",
-                            @"html_url": @"https://github.com/JaimeConnor",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Joseph Lau",
-                            @"location": @"San Francisco, CA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/7451830?",
-                            @"html_url": @"https://github.com/JosephLauSF",
-                            @"gist": @"1",
-                            @"Followers": @"1",
-                            @"Following": @"0"},
-                          @{@"name": @"Jeremy Butler",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/7903562?",
-                            @"html_url": @"https://github.com/jeremycbutler",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Shane Sniteman",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/4793213?",
-                            @"html_url": @"https://github.com/ssniteman",
-                            @"gist": @"0",
-                            @"Followers": @"22",
-                            @"Following": @"35"},
-                          @{@"name": @"Eric Seidel",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/8224720?",
-                            @"html_url": @"https://github.com/EWJSeidel",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Eric Williams",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/8224735?",
-                            @"html_url": @"https://github.com/ericstephen",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Arthur Boia",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/8224728?",
-                            @"html_url": @"https://github.com/Anterio",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Nick",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/8224722?",
-                            @"html_url": @"https://github.com/npeterson213",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Daniel Merrill",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/8224723?",
-                            @"html_url": @"https://github.com/dmerrill88",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Josh Hendershot",
-                            @"location": @"Seattle, WA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/7279926?",
-                            @"html_url": @"https://github.com/jhend11",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Rene Candelier",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/4494771?",
-                            @"html_url": @"https://github.com/renecandelier",
-                            @"gist": @"0",
-                            @"Followers": @"1",
-                            @"Following": @"2"},
-                          @{@"name": @"Meritt Tidwell",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/7989843?",
-                            @"html_url": @"https://github.com/mertid",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                          @{@"name": @"Katlyn Schawaebe",
-                            @"location": @"Atlanta, GA",
-                            @"avatar_url": @"https://avatars.githubusercontent.com/u/6909470?",
-                            @"html_url": @"https://github.com/schwaebek",
-                            @"gist": @"0",
-                            @"Followers": @"0",
-                            @"Following": @"0"},
-                        
-                           
-                            ] mutableCopy];
+        githubFriends = [@[] mutableCopy];
+        
+        NSArray *loadedUsers = [GRAGithubRequest loadUsers];
+        
+        if (loadedUsers) {
+            githubFriends = [loadedUsers mutableCopy];
+        }
+        
+        self.tableView.rowHeight = 80;
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        self.tableView.backgroundColor = [UIColor darkGrayColor];
     }
     return self;
 }
@@ -154,26 +52,38 @@
     [super viewDidLoad];
     
     
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 60)];
+    headerView.backgroundColor = [UIColor colorWithRed:0.984f green:0.008f blue:0.263f alpha:1.0f];
     self.tableView.tableHeaderView = headerView;
-//    
+  
     
-    self.searchBar = [[UITextField alloc]initWithFrame:CGRectMake(10, 40, 250, 40)];
-    self.searchBar.layer.borderWidth = 1;
+    self.searchBar = [[UITextField alloc]initWithFrame:CGRectMake(10, 11, 250, 40)];
     self.searchBar.placeholder = @"Search";
-    [self.view addSubview:self.searchBar];
+    self.searchBar.layer.cornerRadius = 5;
+    [headerView addSubview:self.searchBar];
     UIView *paddingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 20)];
     self.searchBar.leftView = paddingView;
     self.searchBar.leftViewMode = UITextFieldViewModeAlways;
     self.searchBar.delegate = self;
+    self.searchBar.backgroundColor = [UIColor whiteColor];
+    
 
-   
 
-    searchButton = [[UIButton alloc]initWithFrame:CGRectMake(270, 40, 40, 40)];
-    [self.view addSubview:searchButton];
+    searchButton = [[UIButton alloc]initWithFrame:CGRectMake(270, 11, 40, 40)];
+    [headerView addSubview:searchButton];
     searchButton.backgroundColor = [UIColor grayColor];
     searchButton.layer.cornerRadius = 20;
     [searchButton addTarget:self action:@selector(searchbarWasPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImage *sbimage = [UIImage imageNamed:@"searchButton"];
+    [searchButton setImage:sbimage forState:UIControlStateNormal];
+    // try.dot notation of this
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapdismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+    [tap setCancelsTouchesInView:YES];
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -185,13 +95,31 @@
 #pragma mark - Helper Methods
     
 }
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+- (void)tapdismissKeyboard
+{
+    [self.searchBar resignFirstResponder];
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
 }
 
 - (void)searchbarWasPressed{
     NSLog(@"Search Bar Was Pressed");
+    
+    NSDictionary *userInfo = [GRAGithubRequest requestUserInfo:self.searchBar.text];
+    // add an object to the bottom
+//    [githubFriends addObject:userInfo];
+    [self.tableView reloadData];
+    
+    // add an object to the beginning
+    [githubFriends insertObject:userInfo atIndex:0];
+    [GRAGithubRequest saveUsers:githubFriends];
+    
+    self.searchBar.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -207,11 +135,6 @@
 //    // Return the number of sections.
 //    return 0;
 //}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 80;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -229,6 +152,7 @@
     }
     
     cell.friendInfo = githubFriends[indexPath.row];
+    cell.NavigationController = self.navigationController;
     
     // Configure the cell...
     
@@ -238,35 +162,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"select row at %@",indexPath);
-    GFAViewController *profileView = [[GFAViewController alloc]init];
-    [self.navigationController pushViewController:profileView animated:YES];
-    profileView.view.backgroundColor = [UIColor lightGrayColor];
-    profileView.friendInfo2 = githubFriends[indexPath.row];
-    
+ 
    
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [githubFriends removeObjectAtIndex:indexPath.row];
+        
+        [GRAGithubRequest saveUsers:githubFriends];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

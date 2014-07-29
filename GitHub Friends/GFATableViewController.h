@@ -11,6 +11,6 @@
 @interface GFATableViewController : UITableViewController
 
 @property (nonatomic) UITextField *searchBar;
-
+@property (nonatomic) UINavigationController *NavigationController;
 
 @end

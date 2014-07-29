@@ -1,52 +1,26 @@
 //
-//  GFAAppDelegate.m
-//  GitHub Friends
+//  GRAAppDelegate.m
+//  Github Request
 //
-//  Created by KaL on 7/24/14.
+//  Created by KaL on 7/28/14.
 //  Copyright (c) 2014 Kalson Kalu. All rights reserved.
 //
 
-#import "GFAAppDelegate.h"
-#import "GFATableViewController.h"
-#import "GFATableViewCell.h"
+#import "GRAAppDelegate.h"
+#import "GRAGithubRequest.h"
 
-@implementation GFAAppDelegate
+@implementation GRAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    UINavigationController *nC = [[UINavigationController alloc]initWithRootViewController:[[GFATableViewController alloc]initWithStyle:UITableViewStylePlain]];
+    [GRAGithubRequest requestUserInfo:@"joalbright"];
     
-    
-    UINavigationBar *navigationBar = nC.navigationBar;
-//    navigationBar.barTintColor = [UIColor colorWithRed:1.000f green:0.000f blue:0.267f alpha:1.0f];
-    
-    navigationBar.tintColor = [UIColor whiteColor];
-    
-//    GFATableViewController * tVControl = [[GFATableViewController alloc] init];
-//    
-//    
-//    tVControl.searchBar = [[UITextField alloc]initWithFrame:CGRectMake(10, 40, 250, 40)];
-//    tVControl.searchBar.layer.borderWidth = 1;
-//    tVControl.searchBar.placeholder = @"Search";
-//    [tVControl.self.view addSubview:tVControl.searchBar];
-//    UIView *paddingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 20)];
-//    tVControl.searchBar.leftView = paddingView;
-//    tVControl.searchBar.leftViewMode = UITextFieldViewModeAlways;
-//   // tVControl.searchBar.delegate = tVControl;
-//    
-    
-
-
-    self.window.rootViewController = nC;
-  
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
-    
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

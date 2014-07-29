@@ -19,10 +19,10 @@
     UIButton *gistsButton;
     UILabel *gistLabel;
     UILabel *followersLabel;
-    UIImageView *upArrowImageView;
-    UIImageView *downArrowImageView;
+    UIImageView *ArrowImageView;
     UILabel *neutralImage;
     UILabel *followerText;
+    
     
 //    UILabel *friendFollowers;
 //    UILabel *friendFollowing;
@@ -44,20 +44,25 @@
         [self.contentView addSubview:gistsButton];
         profileButton = [[UIButton alloc]initWithFrame:CGRectMake(290, 10, 20, 20)];
         [self.contentView addSubview:profileButton];
+        [profileButton setBackgroundImage:[UIImage imageNamed:@"profileArrow"] forState:UIControlStateNormal];
+        [self.contentView addSubview:profileButton];
         gistLabel = [[UILabel alloc]initWithFrame:CGRectMake(250, 50, 20, 20)];
         [self.contentView addSubview:gistLabel];
         followersLabel = [[UILabel alloc]initWithFrame:CGRectMake(105, 50, 20, 20)];
         [self.contentView addSubview:followersLabel];
-        upArrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(90, 50, 20, 20)];
-        [self.contentView addSubview:upArrowImageView];
-        downArrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(90, 50, 20, 20)];
-        [self.contentView addSubview:downArrowImageView];
+        ArrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(90, 50, 20, 20)];
+        [self.contentView addSubview:ArrowImageView];
+        ArrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(90, 50, 20, 20)];
+        [self.contentView addSubview:ArrowImageView];
         neutralImage = [[UILabel alloc]initWithFrame:CGRectMake(90, 50, 20, 20)];
         [self.contentView addSubview:neutralImage];
         followerText = [[UILabel alloc]initWithFrame:CGRectMake(130, 50, 80, 20)];
         [self.contentView addSubview:followerText];
+        
 
-       
+        // another way to set an image on a button
+        //    UIImage *image = [UIImage imageNamed:@"profileArrow"];
+        //    [profileButton  setImage:image forState:UIControlStateNormal];
 
 
         
@@ -83,15 +88,12 @@
 
 - (void)setFriendInfo:(NSDictionary *)friendInfo{
     
-    self.layer.borderWidth = 0.30;
-    self.layer.borderColor = [[UIColor whiteColor]CGColor];
-    
     self.backgroundColor = [UIColor darkGrayColor];
 
     
     _friendInfo = friendInfo;
     
-    NSLog(@"%@", friendInfo);
+//    NSLog(@"%@", friendInfo);
     friendName.text = friendInfo[@"name"];
     friendName.font = [UIFont fontWithName:@"HelveticaNeue-Ultralight" size:20];
     friendName.textColor = [UIColor whiteColor];
@@ -106,9 +108,6 @@
     friendLocation.textColor = [UIColor whiteColor];
     
     [profileButton addTarget:self action:@selector(profileButtonWasClicked) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *image = [UIImage imageNamed:@"profileArrow"];
-    [profileButton  setImage:image forState:UIControlStateNormal];
-    [self.contentView addSubview:profileButton];
     
     gistLabel.backgroundColor = [UIColor whiteColor];
     gistLabel.text = friendInfo[@"gist"];
@@ -129,9 +128,13 @@
     neutralImage.layer.cornerRadius = 10;
     neutralImage.layer.masksToBounds = YES;
     
+   
   
     
-    int num = [friendInfo[@"Followers"] intValue] - [friendInfo[@"Following"] intValue];
+    int num = [friendInfo[@"followers"] intValue] - [friendInfo[@"following"] intValue];
+    
+    NSLog(@"num = %@",friendInfo);
+
     
     if (num > 0)
     {
@@ -143,7 +146,9 @@
         followerText.textColor = [UIColor colorWithRed:0.396f green:0.839f blue:0.686f alpha:1.0f];
         
         UIImage *upArrowImage = [UIImage imageNamed:@"upArrow"];
-        upArrowImageView.image = upArrowImage;
+        ArrowImageView.image = upArrowImage;
+        
+        
         
     } else if (num < 0)
     {
@@ -155,7 +160,7 @@
         followerText.textColor = [UIColor colorWithRed:0.839f green:0.031f blue:0.310f alpha:1.0f];
         
         UIImage *downArrowImage = [UIImage imageNamed:@"downArrow"];
-        downArrowImageView.image = downArrowImage;
+        ArrowImageView.image = downArrowImage;
     } else if (num == 0)
     {
         followersLabel.layer.borderColor = [[UIColor grayColor]CGColor];
@@ -206,6 +211,7 @@
     NSLog(@"Profile button was clicked");
     GFAViewController *profileView = [[GFAViewController alloc]init];
     [self.NavigationController pushViewController:profileView animated:YES];
+    profileView.friendInfo2 = self.friendInfo;
     profileView.view.backgroundColor = [UIColor lightGrayColor];
     
     
@@ -215,6 +221,13 @@
 
 - (void)gistsButtonWasClicked{
     NSLog(@"Gists button was clicked");
+    GFAViewController *profileView = [[GFAViewController alloc]init];
+    
+    NSString *gistURL = [NSString stringWithFormat:@"https://gist.github.com/%@",self.friendInfo[@"login"]];
+    profileView.view.backgroundColor = [UIColor lightGrayColor];
+    profileView.friendInfo2 = @{@"html_url": gistURL};
+    [self.NavigationController pushViewController:profileView animated:YES];
+
 }
 
 - (void)awakeFromNib
