@@ -7,6 +7,7 @@
 //
 
 #import "STAGroupsTableViewController.h"
+#import "STAItemsTableViewController.h"
 
 @interface STAGroupsTableViewController ()
 
@@ -25,7 +26,18 @@
         groups = [@[
                     [@{
                        @"name": @"Movies",
-                       @"items": [@[] mutableCopy]
+                       @"items": [@[
+                                    @{@"name": @"Gaurdians of the Galaxy",
+                                      @"priority": @100
+                                      },
+                                    @{@"name": @"Expendables",
+                                      @"priority":@80
+                                      },
+                                    @{@"name": @"TMNT",
+                                      @"priority":@60
+                                      }
+                                    
+                                    ] mutableCopy]
                       } mutableCopy],
                     
                     [@{
@@ -38,6 +50,9 @@
         
     }
     return self;
+    
+//    self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    
 }
 
 - (void)viewDidLoad
@@ -49,6 +64,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,30 +76,37 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    // Return the number of sections.
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return groups.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    cell.textLabel.text = groups[indexPath.row][@"name"];
     
     // Configure the cell...
     
     return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    STAItemsTableViewController *itemTVC = [[STAItemsTableViewController alloc]init];
+    [self.navigationController pushViewController:itemTVC animated:YES];
+    
+    itemTVC.groupInfo = groups[indexPath.row];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -132,5 +156,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (BOOL)prefersStatusBarHidden {return YES;}
+
 
 @end

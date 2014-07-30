@@ -10,4 +10,6 @@
 
 @interface STAItemsTableViewController : UITableViewController
 
+@property (nonatomic) NSMutableDictionary *groupInfo;
+
 @end

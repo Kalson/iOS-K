@@ -7,6 +7,7 @@
 //
 
 #import "STAAppDelegate.h"
+#import "STAGroupsTableViewController.h"
 
 @implementation STAAppDelegate
 
@@ -14,6 +15,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    UINavigationController *nC = [[UINavigationController alloc]initWithRootViewController:[[STAGroupsTableViewController alloc]init]];
+    self.window.rootViewController = nC;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
