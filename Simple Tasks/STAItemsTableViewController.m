@@ -63,7 +63,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.groupInfo[indexPath.row][@"items"];
+    cell.textLabel.text = self.groupInfo[@"items"][indexPath.row][@"name"];
+    // indexpath after [@"items"] because its a dictionary
     
     // Configure the cell...
     
