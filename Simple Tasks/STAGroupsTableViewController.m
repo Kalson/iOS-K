@@ -26,7 +26,8 @@
         // Custom initialization
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         
-        self.groups = [@[
+        self.groups = [
+  @[
                     [@{
                        @"name": @"Movies",
                        @"items": [@[
@@ -85,11 +86,23 @@
   
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"%@",self.groups);
+    [self.tableView reloadData];
+}
+
 - (void)addNewGroupClicked
 {
     STANewGroupViewController *addNewGroupVC = [[STANewGroupViewController alloc]init];
     [self.navigationController presentViewController:addNewGroupVC animated:YES completion:nil];
+    
+     addNewGroupVC.groups = self.groups;
+    ///// new important link
    
+    
+  
 }
 
 
@@ -143,18 +156,23 @@
 }
 */
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
         // Delete the row from the data source
+        
+        [self.groups removeObjectAtIndex:indexPath.row];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        // this removes the cell animation
+        
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

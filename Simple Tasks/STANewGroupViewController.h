@@ -10,6 +10,6 @@
 
 @interface STANewGroupViewController : UIViewController
 
-@property (nonatomic) NSMutableArray *newgroup;
+@property (nonatomic) NSMutableArray *groups;
 
 @end

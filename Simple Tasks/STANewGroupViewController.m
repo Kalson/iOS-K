@@ -15,8 +15,8 @@
 
 @implementation STANewGroupViewController
 {
-    UIButton *checkButton;
-    UIButton *xButton;
+    UIButton *saveButton;
+    UIButton *cancelButton;
     UITextField *newGroupTextField;
     UILabel *line;
     UIImage *image;
@@ -38,30 +38,31 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    checkButton = [[UIButton alloc]initWithFrame:CGRectMake(165, 70, 100, 100)];
-    [checkButton addTarget:self action:@selector(checkButtonWasCLicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:checkButton];
-    checkButton.layer.borderWidth = 1;
-    checkButton.layer.cornerRadius = 50;
+    saveButton = [[UIButton alloc]initWithFrame:CGRectMake(165, 70, 100, 100)];
+    [saveButton addTarget:self action:@selector(saveButtonWasCLicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveButton];
+    saveButton.layer.borderWidth = 1;
+    saveButton.layer.cornerRadius = 50;
     image = [UIImage imageNamed:@"group_save"];
-    [checkButton setBackgroundImage:image forState:UIControlStateNormal];
-    checkButton.adjustsImageWhenHighlighted = NO;
+    [saveButton setBackgroundImage:image forState:UIControlStateNormal];
+    saveButton.adjustsImageWhenHighlighted = NO;
     
     
-    xButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2.0 - 110, 70, 100, 100)];
-    [xButton addTarget:self action:@selector(xButtonWasCLicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:xButton];
-    xButton.layer.borderWidth = 1;
-    xButton.layer.cornerRadius = 50;
+    cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2.0 - 110, 70, 100, 100)];
+    [cancelButton addTarget:self action:@selector(cancelButtonWasCLicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cancelButton];
+    cancelButton.layer.borderWidth = 1;
+    cancelButton.layer.cornerRadius = 50;
     image = [UIImage imageNamed:@"group_close"];
-    [xButton setBackgroundImage:image forState:UIControlStateNormal];
-    xButton.adjustsImageWhenHighlighted = NO;
+    [cancelButton setBackgroundImage:image forState:UIControlStateNormal];
+    cancelButton.adjustsImageWhenHighlighted = NO;
     
     newGroupTextField = [[UITextField alloc]initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH - 40, 40)];
     [self.view addSubview:newGroupTextField];
 //    newGroupTextField.layer.borderWidth = 1;
     newGroupTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:30];
     newGroupTextField.delegate = self;
+    [newGroupTextField becomeFirstResponder];
     
     UIView *fieldBar = [[UIView alloc]initWithFrame:CGRectMake(20, 60, SCREEN_WIDTH - 40, 1)];
     fieldBar.backgroundColor = [UIColor blackColor];
@@ -78,25 +79,26 @@
 
 }
 
-- (void)setNewgroup:(NSMutableDictionary *)newgroup
-{
-    _newgroup = newgroup;
-    STAGroupsTableViewController *groupTVC = [[STAGroupsTableViewController alloc]init];
-    groupTVC.groups = newgroup[@"name"][0];
-    NSMutableDictionary *newObject = [[NSMutableDictionary alloc]init];
-    [groupTVC.groups addObject:newObject];
-    NSLog(@"new group added = %@",newObject);
-    
-}
+//- (void)setGroups:(NSMutableArray *)groups
+//{
+////    STAGroupsTableViewController *groupTVC = [[STAGroupsTableViewController alloc]init];
+////    groupTVC.groups = groups[@"name"][0];
+////    NSMutableDictionary *newObject = [[NSMutableDictionary alloc]init];
+////    [groupTVC.groups addObject:newObject];
+////    NSLog(@"new group added = %@",newObject);
+//    
+//}
 
-- (void)checkButtonWasCLicked{
-      NSLog(@"check button was pressed");
-    [self newgroup];
+- (void)saveButtonWasCLicked{
+    [self.groups addObject:[@{
+                              @"name": newGroupTextField.text,
+                              @"items": [@[] mutableCopy]
+                              } mutableCopy]];
     [self dismissViewControllerAnimated:YES completion:nil];
-   
+ 
 }
 
-- (void)xButtonWasCLicked{
+- (void)cancelButtonWasCLicked{
       NSLog(@"x button was pressed");
      [self dismissViewControllerAnimated:YES completion:nil];
 }
