@@ -7,6 +7,7 @@
 //
 
 #import "STAItemsTableViewController.h"
+#import "STAEditItemViewController.h"
 
 @interface STAItemsTableViewController ()
 
@@ -19,6 +20,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+          self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
@@ -67,8 +69,20 @@
     // indexpath after [@"items"] because its a dictionary
     
     // Configure the cell...
+    NSNumber *priority = self.groupInfo[@"items"][indexPath.row][@"priority"];
+    float priorityHue = [priority floatValue] / 360;
+    cell.backgroundColor = [UIColor colorWithHue:priorityHue saturation:1.0 brightness:1.0 alpha:1.0];
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    STAEditItemViewController *editItemVC = [[STAEditItemViewController alloc]init];
+    [self.navigationController pushViewController:editItemVC animated:YES];
+    
+    editItemVC.itemInfo = self.groupInfo[@"items"][indexPath.row];
 }
 
 /*

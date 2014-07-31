@@ -10,4 +10,6 @@
 
 @interface STAGroupsTableViewController : UITableViewController
 
+@property (nonatomic) NSMutableArray *groups;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "STAGroupsTableViewController.h"
 #import "STAItemsTableViewController.h"
+#import "STANewGroupViewController.h"
 
 @interface STAGroupsTableViewController ()
 
@@ -15,7 +16,7 @@
 
 @implementation STAGroupsTableViewController
 {
-    NSMutableArray *groups;
+   
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -23,19 +24,21 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        groups = [@[
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        
+        self.groups = [@[
                     [@{
                        @"name": @"Movies",
                        @"items": [@[
-                                    @{@"name": @"Gaurdians of the Galaxy",
-                                      @"priority": @100
-                                      },
-                                    @{@"name": @"Expendables",
-                                      @"priority":@80
-                                      },
-                                    @{@"name": @"TMNT",
+                                    [@{@"name": @"Gaurdians of the Galaxy",
+                                      @"priority": @20
+                                      } mutableCopy],
+                                    [@{@"name": @"Expendables",
+                                      @"priority":@40
+                                      } mutableCopy],
+                                    [@{@"name": @"TMNT",
                                       @"priority":@60
-                                      }
+                                      } mutableCopy]
                                     
                                     ] mutableCopy]
                       } mutableCopy],
@@ -51,7 +54,7 @@
     }
     return self;
     
-//    self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+
     
 }
 
@@ -59,14 +62,36 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    UIBarButtonItem *addNewGroup = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewGroupClicked)];
+    self.navigationItem.rightBarButtonItem = addNewGroup;
+    
+    ////// create a sublclass UIViewController named STANewGroupViewController
+    ////// add textfield for group name
+    ////// add 2 buttons for cancel and save
+    ////// pass the groups array to the VC hint:@property
+    ////// save creates NSMutableDictionary and adds it to the groups array
+    ////// save and cancel "dismiss" the vc
+    ////// do it for items vc to all this
+
+    
+// Uncomment the following line to preserve selection between presentations.
+// self.clearsSelectionOnViewWillAppear = NO;
+    
+// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    
+  
 }
+
+- (void)addNewGroupClicked
+{
+    STANewGroupViewController *addNewGroupVC = [[STANewGroupViewController alloc]init];
+    [self.navigationController presentViewController:addNewGroupVC animated:YES completion:nil];
+   
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -85,7 +110,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return groups.count;
+    return self.groups.count;
 }
 
 
@@ -93,7 +118,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = groups[indexPath.row][@"name"];
+    cell.textLabel.text = self.groups[indexPath.row][@"name"];
     
     // Configure the cell...
     
@@ -105,7 +130,8 @@
     STAItemsTableViewController *itemTVC = [[STAItemsTableViewController alloc]init];
     [self.navigationController pushViewController:itemTVC animated:YES];
     
-    itemTVC.groupInfo = groups[indexPath.row];
+    itemTVC.groupInfo = self.groups[indexPath.row];
+    ///// the important link that makes the creation
 }
 
 /*

@@ -1,5 +1,5 @@
 //
-//  STAEditItemViewController.h
+//  STANewGroupViewController.h
 //  Simple Tasks
 //
 //  Created by KaL on 7/30/14.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STAEditItemViewController : UIViewController
+@interface STANewGroupViewController : UIViewController
 
-@property (nonatomic) NSMutableDictionary *itemInfo;
+@property (nonatomic) NSMutableArray *newgroup;
 
 @end

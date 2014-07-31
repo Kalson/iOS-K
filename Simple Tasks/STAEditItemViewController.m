@@ -8,7 +8,7 @@
 
 #import "STAEditItemViewController.h"
 
-@interface STAEditItemViewController ()
+@interface STAEditItemViewController () <UITextFieldDelegate>
 
 @end
 
@@ -19,6 +19,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+//         self.view.backgroundColor = [UIColor whiteColor];
+        NSNumber *priority = self.itemInfo[@"priority"];
+        float priorityHue = [priority floatValue] / 360;
+        self.view.backgroundColor = [UIColor colorWithHue:priorityHue saturation:1.0 brightness:1.0 alpha:1.0];
+
     }
     return self;
 }
@@ -27,23 +32,64 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
 }
 
-- (void)didReceiveMemoryWarning
+- (void)setItemInfo:(NSMutableDictionary *)itemInfo
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _itemInfo = itemInfo;
+    
+    UITextField *itemNameField = [[UITextField alloc]initWithFrame:CGRectMake(20, 60, SCREEN_WIDTH - 40, 50)];
+    itemNameField.text = itemInfo[@"name"];
+    itemNameField.delegate = self;
+    
+    [self.view addSubview:itemNameField];
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.itemInfo[@"name"] = textField.text;
+    
+    [textField resignFirstResponder];
+    return YES;
 }
-*/
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+     [self changeColorWithLocation:[[touches allObjects][0] locationInView:self.view]];
+  
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+//    UITouch *touch = [touches allObjects][0];
+//    
+//    CGPoint location = [touch locationInView:self.view];
+//    // no asterisk beacuse its a obj-c struct
+    
+    [self changeColorWithLocation:[[touches allObjects][0] locationInView:self.view]];
+  
+}
+
+- (void)changeColorWithLocation:(CGPoint)location
+{
+    float priority = location.y / SCREEN_HEIGHT * 60;
+    // screen height = 480
+    NSLog(@"y = %f",priority/60.0);
+    
+    float priorityHue = priority / 360;
+    
+    self.itemInfo[@"priority"] = @(priority);
+    
+    self.view.backgroundColor = [UIColor colorWithHue:priorityHue saturation:1.0 brightness:1.0 alpha:1.0];
+}
+
+- (BOOL)prefersStatusBarHidden {return YES;}
+
 
 @end
+
+
+

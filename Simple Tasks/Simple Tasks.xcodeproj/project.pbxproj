@@ -22,6 +22,7 @@
 		26AF6B0019892BB7008D4490 /* STAGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6AFF19892BB7008D4490 /* STAGroupsTableViewController.m */; };
 		26AF6B0319892BD9008D4490 /* STAItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6B0219892BD9008D4490 /* STAItemsTableViewController.m */; };
 		26AF6B0619892C0D008D4490 /* STAEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6B0519892C0D008D4490 /* STAEditItemViewController.m */; };
+		26C7ED701989880900EA0DA5 /* STANewGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C7ED6F1989880900EA0DA5 /* STANewGroupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		26AF6B0219892BD9008D4490 /* STAItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAItemsTableViewController.m; sourceTree = "<group>"; };
 		26AF6B0419892C0D008D4490 /* STAEditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAEditItemViewController.h; sourceTree = "<group>"; };
 		26AF6B0519892C0D008D4490 /* STAEditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAEditItemViewController.m; sourceTree = "<group>"; };
+		26C7ED6E1989880900EA0DA5 /* STANewGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STANewGroupViewController.h; sourceTree = "<group>"; };
+		26C7ED6F1989880900EA0DA5 /* STANewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STANewGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 				26AF6B0219892BD9008D4490 /* STAItemsTableViewController.m */,
 				26AF6B0419892C0D008D4490 /* STAEditItemViewController.h */,
 				26AF6B0519892C0D008D4490 /* STAEditItemViewController.m */,
+				26C7ED6E1989880900EA0DA5 /* STANewGroupViewController.h */,
+				26C7ED6F1989880900EA0DA5 /* STANewGroupViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			files = (
 				26AF6B0019892BB7008D4490 /* STAGroupsTableViewController.m in Sources */,
 				26AF6B0319892BD9008D4490 /* STAItemsTableViewController.m in Sources */,
+				26C7ED701989880900EA0DA5 /* STANewGroupViewController.m in Sources */,
 				26AF6ADB19892B23008D4490 /* main.m in Sources */,
 				26AF6ADF19892B23008D4490 /* STAAppDelegate.m in Sources */,
 				26AF6B0619892C0D008D4490 /* STAEditItemViewController.m in Sources */,
@@ -464,6 +470,7 @@
 				26AF6AF919892B23008D4490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		26AF6AFA19892B23008D4490 /* Build configuration list for PBXNativeTarget "Simple TasksTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +479,7 @@
 				26AF6AFC19892B23008D4490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
