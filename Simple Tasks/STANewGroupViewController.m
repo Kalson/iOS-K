@@ -61,10 +61,16 @@
     [self.view addSubview:newGroupTextField];
 //    newGroupTextField.layer.borderWidth = 1;
     newGroupTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:30];
+    newGroupTextField.placeholder = @"Group";
     newGroupTextField.delegate = self;
     [newGroupTextField becomeFirstResponder];
     
-    UIView *fieldBar = [[UIView alloc]initWithFrame:CGRectMake(20, 60, SCREEN_WIDTH - 40, 1)];
+    UIView *paddingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 20)];
+    newGroupTextField.leftView = paddingView;
+    newGroupTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+    
+    UIView *fieldBar = [[UIView alloc]initWithFrame:CGRectMake(20, 50, SCREEN_WIDTH - 40, 1)];
     fieldBar.backgroundColor = [UIColor blackColor];
     [self.view addSubview:fieldBar];
 
@@ -114,7 +120,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (BOOL)prefersStatusBarHidden {return YES;}
 

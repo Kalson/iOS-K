@@ -15,9 +15,6 @@
 @end
 
 @implementation STAGroupsTableViewController
-{
-   
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,37 +23,22 @@
         // Custom initialization
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         
-        self.groups = [
-  @[
-                    [@{
-                       @"name": @"Movies",
-                       @"items": [@[
-                                    [@{@"name": @"Gaurdians of the Galaxy",
-                                      @"priority": @20
-                                      } mutableCopy],
-                                    [@{@"name": @"Expendables",
-                                      @"priority":@40
-                                      } mutableCopy],
-                                    [@{@"name": @"TMNT",
-                                      @"priority":@60
-                                      } mutableCopy]
-                                    
-                                    ] mutableCopy]
-                      } mutableCopy],
-                    
-                    [@{
-                      @"name": @"Apps to Write",
-                      @"items": [@[] mutableCopy]
-                      } mutableCopy]
-                  
-                    
-                    ] mutableCopy];
+//        self.groups = [@[] mutableCopy];
+//
+//        NSMutableArray *loadGroupsArray = [self loadGroupData];
         
+//        if (loadGroupsArray) {
+//            self.groups = loadGroupsArray;
+//        }
+//        
+        
+        self.groups = ([self loadGroupData]) ? [self loadGroupData]:[@[] mutableCopy];
+        // loading save Data
+        
+       
     }
     return self;
-    
 
-    
 }
 
 - (void)viewDidLoad
@@ -67,6 +49,8 @@
     
     UIBarButtonItem *addNewGroup = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewGroupClicked)];
     self.navigationItem.rightBarButtonItem = addNewGroup;
+    
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     ////// create a sublclass UIViewController named STANewGroupViewController
     ////// add textfield for group name
@@ -79,10 +63,7 @@
     
 // Uncomment the following line to preserve selection between presentations.
 // self.clearsSelectionOnViewWillAppear = NO;
-    
-// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    
+     
   
 }
 
@@ -91,6 +72,8 @@
     [super viewWillAppear:animated];
     NSLog(@"%@",self.groups);
     [self.tableView reloadData];
+    
+    [self saveGroupData];
 }
 
 - (void)addNewGroupClicked
@@ -100,8 +83,6 @@
     
      addNewGroupVC.groups = self.groups;
     ///// new important link
-   
-    
   
 }
 
@@ -130,7 +111,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
     cell.textLabel.text = self.groups[indexPath.row][@"name"];
     
     // Configure the cell...
@@ -144,17 +124,12 @@
     [self.navigationController pushViewController:itemTVC animated:YES];
     
     itemTVC.groupInfo = self.groups[indexPath.row];
-    ///// the important link that makes the creation
+    itemTVC.items = self.groups[indexPath.row][@"items"];
+    ///// the important link that makes the creation - passing the groups file to the @properties of other subclass
+    
+//    itemTVC.groupInfo = self.groups[indexPath.row];
+    
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -165,6 +140,10 @@
         
         [self.groups removeObjectAtIndex:indexPath.row];
         
+        // this save the fact that we deleted an object
+        [self saveGroupData];
+        
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         // this removes the cell animation
         
@@ -174,35 +153,54 @@
 }
 
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)saveGroupData
 {
+     // this is archiving the array
+    NSData *groupData = [NSKeyedArchiver archivedDataWithRootObject:self.groups];
+    [groupData writeToFile:[self groupFilePath] atomically:YES];
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSMutableArray *)loadGroupData
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self groupFilePath]];
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (NSString *)groupFilePath
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSArray *documemtDIrectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = documemtDIrectories[0];
+    
+    return  [path stringByAppendingPathComponent:@"groups.data"];
 }
-*/
-
 
 - (BOOL)prefersStatusBarHidden {return YES;}
+
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
 
 
 @end

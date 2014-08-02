@@ -11,5 +11,6 @@
 @interface STAItemsTableViewController : UITableViewController
 
 @property (nonatomic) NSMutableDictionary *groupInfo;
+@property (nonatomic) NSMutableArray * items;
 
 @end

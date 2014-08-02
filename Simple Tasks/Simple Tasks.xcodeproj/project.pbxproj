@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263EA192198B3FEA0049C9F6 /* STAEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263EA191198B3FEA0049C9F6 /* STAEditViewController.m */; };
 		26AF6ACF19892B23008D4490 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26AF6ACE19892B23008D4490 /* Foundation.framework */; };
 		26AF6AD119892B23008D4490 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26AF6AD019892B23008D4490 /* CoreGraphics.framework */; };
 		26AF6AD319892B23008D4490 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26AF6AD219892B23008D4490 /* UIKit.framework */; };
@@ -21,7 +22,7 @@
 		26AF6AF419892B23008D4490 /* Simple_TasksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6AF319892B23008D4490 /* Simple_TasksTests.m */; };
 		26AF6B0019892BB7008D4490 /* STAGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6AFF19892BB7008D4490 /* STAGroupsTableViewController.m */; };
 		26AF6B0319892BD9008D4490 /* STAItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6B0219892BD9008D4490 /* STAItemsTableViewController.m */; };
-		26AF6B0619892C0D008D4490 /* STAEditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6B0519892C0D008D4490 /* STAEditItemViewController.m */; };
+		26AF6B0619892C0D008D4490 /* STANewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26AF6B0519892C0D008D4490 /* STANewItemViewController.m */; };
 		26C7ED701989880900EA0DA5 /* STANewGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C7ED6F1989880900EA0DA5 /* STANewGroupViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		263EA190198B3FEA0049C9F6 /* STAEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAEditViewController.h; sourceTree = "<group>"; };
+		263EA191198B3FEA0049C9F6 /* STAEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAEditViewController.m; sourceTree = "<group>"; };
 		26AF6ACB19892B23008D4490 /* Simple Tasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Tasks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26AF6ACE19892B23008D4490 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		26AF6AD019892B23008D4490 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,8 +59,8 @@
 		26AF6AFF19892BB7008D4490 /* STAGroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAGroupsTableViewController.m; sourceTree = "<group>"; };
 		26AF6B0119892BD9008D4490 /* STAItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAItemsTableViewController.h; sourceTree = "<group>"; };
 		26AF6B0219892BD9008D4490 /* STAItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAItemsTableViewController.m; sourceTree = "<group>"; };
-		26AF6B0419892C0D008D4490 /* STAEditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAEditItemViewController.h; sourceTree = "<group>"; };
-		26AF6B0519892C0D008D4490 /* STAEditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAEditItemViewController.m; sourceTree = "<group>"; };
+		26AF6B0419892C0D008D4490 /* STANewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STANewItemViewController.h; sourceTree = "<group>"; };
+		26AF6B0519892C0D008D4490 /* STANewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STANewItemViewController.m; sourceTree = "<group>"; };
 		26C7ED6E1989880900EA0DA5 /* STANewGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STANewGroupViewController.h; sourceTree = "<group>"; };
 		26C7ED6F1989880900EA0DA5 /* STANewGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STANewGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,10 +89,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		263EA193198B64CC0049C9F6 /* Items Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				26AF6B0119892BD9008D4490 /* STAItemsTableViewController.h */,
+				26AF6B0219892BD9008D4490 /* STAItemsTableViewController.m */,
+				263EA190198B3FEA0049C9F6 /* STAEditViewController.h */,
+				263EA191198B3FEA0049C9F6 /* STAEditViewController.m */,
+				26AF6B0419892C0D008D4490 /* STANewItemViewController.h */,
+				26AF6B0519892C0D008D4490 /* STANewItemViewController.m */,
+			);
+			name = "Items Controllers";
+			sourceTree = "<group>";
+		};
 		26AF6AC219892B23008D4490 = {
 			isa = PBXGroup;
 			children = (
-				26AF6AFD19892B6C008D4490 /* Controllers */,
+				26AF6AFD19892B6C008D4490 /* Groups Controllers */,
+				263EA193198B64CC0049C9F6 /* Items Controllers */,
 				26AF6AD419892B23008D4490 /* Simple Tasks */,
 				26AF6AED19892B23008D4490 /* Simple TasksTests */,
 				26AF6ACD19892B23008D4490 /* Frameworks */,
@@ -157,19 +174,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		26AF6AFD19892B6C008D4490 /* Controllers */ = {
+		26AF6AFD19892B6C008D4490 /* Groups Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				26AF6AFE19892BB7008D4490 /* STAGroupsTableViewController.h */,
 				26AF6AFF19892BB7008D4490 /* STAGroupsTableViewController.m */,
-				26AF6B0119892BD9008D4490 /* STAItemsTableViewController.h */,
-				26AF6B0219892BD9008D4490 /* STAItemsTableViewController.m */,
-				26AF6B0419892C0D008D4490 /* STAEditItemViewController.h */,
-				26AF6B0519892C0D008D4490 /* STAEditItemViewController.m */,
 				26C7ED6E1989880900EA0DA5 /* STANewGroupViewController.h */,
 				26C7ED6F1989880900EA0DA5 /* STANewGroupViewController.m */,
 			);
-			name = Controllers;
+			name = "Groups Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,9 +284,10 @@
 				26AF6B0019892BB7008D4490 /* STAGroupsTableViewController.m in Sources */,
 				26AF6B0319892BD9008D4490 /* STAItemsTableViewController.m in Sources */,
 				26C7ED701989880900EA0DA5 /* STANewGroupViewController.m in Sources */,
+				263EA192198B3FEA0049C9F6 /* STAEditViewController.m in Sources */,
 				26AF6ADB19892B23008D4490 /* main.m in Sources */,
 				26AF6ADF19892B23008D4490 /* STAAppDelegate.m in Sources */,
-				26AF6B0619892C0D008D4490 /* STAEditItemViewController.m in Sources */,
+				26AF6B0619892C0D008D4490 /* STANewItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

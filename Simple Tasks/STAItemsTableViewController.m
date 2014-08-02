@@ -7,7 +7,9 @@
 //
 
 #import "STAItemsTableViewController.h"
-#import "STAEditItemViewController.h"
+#import "STANewItemViewController.h"
+#import "STAGroupsTableViewController.h"
+#import "STAEditViewController.h"
 
 @interface STAItemsTableViewController ()
 
@@ -21,6 +23,12 @@
     if (self) {
         // Custom initialization
           self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+      
+//        self.groupInfo = ([self loadGroupData]) ? [self loadGroupData]:[@[]mutableCopy];
+//        self.groupInfo = [@[]mutableCopy];
+//        NSMutableArray *loadGroupArray = [self loadGroupData];
+        
+    
     }
     return self;
 }
@@ -33,15 +41,28 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    UIBarButtonItem *addNewItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newItemClicked)];
+    self.navigationItem.rightBarButtonItem = addNewItem;
+}
+
+- (void)newItemClicked
+{
+    STANewItemViewController *newGroupVC = [[STANewItemViewController alloc]init];
+    [self.navigationController presentViewController:newGroupVC animated:YES completion:nil];
+    
+     newGroupVC.itemInfo = self.groupInfo[@"items"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    
+    [self saveGroupData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,64 +104,98 @@
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    STAEditItemViewController *editItemVC = [[STAEditItemViewController alloc]init];
-    [self.navigationController pushViewController:editItemVC animated:YES];
+    STAEditViewController *ItemVC = [[STAEditViewController alloc]init];
     
-    editItemVC.itemInfo = self.groupInfo[@"items"][indexPath.row];
+    NSNumber *priorityHue = self.groupInfo[@"items"][indexPath.row][@"priority"];
+    float priority = [priorityHue floatValue] / 360;
+    ItemVC.view.backgroundColor = [UIColor colorWithHue:priority saturation:1.0 brightness:1.0 alpha:1.0];
+    
+    ItemVC.itemInfo = self.groupInfo[@"items"][indexPath.row];
+    
+    [self.navigationController pushViewController:ItemVC animated:YES];
+
+//   editItemVC.itemInfo = self.groupInfo[@"items"][indexPath.row];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        
+        [self saveGroupData];
+        
+        [self.items removeObjectAtIndex:indexPath.row];
+    
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    // Return NO if you do not want the item to be re-orderable.
+    [textField resignFirstResponder];
     return YES;
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)saveGroupData
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSData *groupData = [NSKeyedArchiver archivedDataWithRootObject:self.groupInfo];
+    [groupData writeToFile:[self groupFilePath] atomically:YES];
+    
 }
-*/
+
+- (void)loadGroupData
+{
+    [NSKeyedUnarchiver unarchiveObjectWithFile:[self groupFilePath]];
+}
+
+- (NSString *)groupFilePath
+{
+    NSArray *documentDictories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = documentDictories[0];
+    
+    return [path stringByAppendingString:@"groups.data"];
+}
+
 
 
 - (BOOL)prefersStatusBarHidden {return YES;}
 
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+
 @end
+
+
+
