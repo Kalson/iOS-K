@@ -8,7 +8,6 @@
 
 #import "STAItemsTableViewController.h"
 #import "STANewItemViewController.h"
-#import "STAGroupsTableViewController.h"
 #import "STAEditViewController.h"
 
 @interface STAItemsTableViewController ()
@@ -47,6 +46,8 @@
     
     UIBarButtonItem *addNewItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newItemClicked)];
     self.navigationItem.rightBarButtonItem = addNewItem;
+    
+    self.title = @"Items";
 }
 
 - (void)newItemClicked
@@ -174,7 +175,7 @@
  - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
  {
  }
- */
+*/
 
 /*
  // Override to support conditional rearranging of the table view.
@@ -183,8 +184,7 @@
  // Return NO if you do not want the item to be re-orderable.
  return YES;
  }
- */
-
+*/
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

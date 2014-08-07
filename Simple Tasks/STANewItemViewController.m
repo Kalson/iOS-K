@@ -21,7 +21,8 @@
     UIImage *image;
     UIView *fieldBar;
     float priority;
-    UIView *dragView;
+    UIButton *dragView;
+    UIButton *buttonDrag;
     
 }
 
@@ -66,56 +67,101 @@
     cancelButton.adjustsImageWhenHighlighted = NO;
     
 
-    // Make a parent container
-    dragView = [[UIView alloc]initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH - 40, 40)];
-    [dragView setTag:101];
-    [self.view addSubview:dragView];
+//    // Make a parent container
+//    dragView = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH - 40, 40)];
+////    image = [UIImage imageNamed:@"dragView"];
+////    [dragView setImage:image forState:UIControlStateNormal];
+//    [dragView setTag:101];
+//    //[self.view addSubview:dragView];
 
     // Create the first child to put in the parent container
-    newItemTextField = [[UITextField alloc]initWithFrame:dragView.frame];
+    newItemTextField = [[UITextField alloc]initWithFrame:CGRectMake(10, 65, SCREEN_WIDTH - 80, 50)];
     newItemTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:30];
     newItemTextField.placeholder = @"Item";
     newItemTextField.delegate = self;
-    [dragView addSubview:newItemTextField];
+    [self.view addSubview:newItemTextField];
     
     // Create the second child
-    fieldBar = [[UIView alloc]initWithFrame:CGRectMake(10, 50, SCREEN_WIDTH - 40, 1)];
+    fieldBar = [[UIView alloc]initWithFrame:CGRectMake(10, 110, SCREEN_WIDTH - 40, 1)];
     fieldBar.backgroundColor = [UIColor blackColor];
-    [dragView addSubview:fieldBar];
+    [self.view addSubview:fieldBar];
     
+    // padding view for textfield
     UIView *paddingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, 20)];
     newItemTextField.leftView = paddingView;
     newItemTextField.leftViewMode = UITextFieldViewModeAlways;
     
+    buttonDrag = [[UIButton alloc]initWithFrame:CGRectMake(260, 65, 36, 40)];
+    buttonDrag.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:buttonDrag];
+    [buttonDrag addTarget:self action: @selector(drag:withEvent:)forControlEvents:UIControlEventTouchDown];
+    [buttonDrag addTarget:self action:@selector(drag:withEvent:)forControlEvents:UIControlEventTouchDragInside];
+    buttonDrag.adjustsImageWhenHighlighted = NO;
+    
+    //Image for the cancel button
+    
+//    [buttonDrag setImage:[UIImage imageNamed:@"circle.png"] forState:UIControlStateNormal];
+    
+    //UIImage *cancelButtonImage = [UIImage imageNamed:@"group_close.png"];
+    // [cancelButton setBackgroundImage:cancelButtonImage forState:UIControlStateNormal];
+    
+    //  [buttonDrag addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+
+
+-(void) drag:(id)sender withEvent:(UIEvent *) event
 {
-    UITouch *touch = [[event allTouches]anyObject];
-    if ([[touch view]tag] == 101 && [touch tapCount] == 1) {
-        [newItemTextField becomeFirstResponder];
-    }
-    [self changeColorWithLocation:[[touches allObjects][0] locationInView:self.view]];
+    
+    CGPoint point = [[[event allTouches] anyObject] locationInView:self.view];
+    
+    // button move
+    buttonDrag.center = CGPointMake(buttonDrag.center.x, point.y+5);
+    
+    // textfield move
+    newItemTextField.center = CGPointMake(newItemTextField.center.x, point.y+10);
+    
+    // fieldbar move
+    fieldBar.center = CGPointMake(fieldBar.center.x, point.y+30);
+    
+    [self changeColorWithLocation:point];
+    
+    
+   // [self changeColorWithLocation:[event allTouches]];
+    
+    //[newItemTextField resignFirstResponder];
+    
 }
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [[event allTouches]anyObject];
-    CGPoint location = [touch locationInView:self.view];
-
-    dragView.center = CGPointMake(newItemTextField.center.x, location.y);
-
-//    if ([[touch view]tag] == 101){
-//        [[touch view] setCenter:location];
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [[event allTouches]anyObject];
+//    if ([[touch view]tag] == 101 && [touch tapCount] == 1)
+//    {
+//        [newItemTextField becomeFirstResponder];
 //    }
-    //    UITouch *touch = [touches allObjects][0];
-    //
-    //    CGPoint location = [touch locationInView:self.view];
-    //    // no asterisk beacuse its a obj-c struct
-    
-    [self changeColorWithLocation:[[touches allObjects][0] locationInView:self.view]];
-    
-}
+//    [self changeColorWithLocation:[[touches allObjects][0] locationInView:self.view]];
+//    [self.view endEditing:YES];
+//}
+
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [[event allTouches]anyObject];
+//    CGPoint location = [touch locationInView:self.view];
+//
+//    dragView.center = CGPointMake(newItemTextField.center.x, location.y);
+//
+////    if ([[touch view]tag] == 101){
+////        [[touch view] setCenter:location];
+////    }
+//    //    UITouch *touch = [touches allObjects][0];
+//    //
+//    //    CGPoint location = [touch locationInView:self.view];
+//    //    // no asterisk beacuse its a obj-c struct
+//    
+//
+//    
+//}
 
 - (void)saveButtonWasCLicked{
     [self.itemInfo addObject:[@{
@@ -153,6 +199,8 @@
 }
 
 - (BOOL)prefersStatusBarHidden {return YES;}
+
+
 
 
 @end

@@ -52,6 +52,9 @@
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
+    self.title = @"Groups";
+    
+    
     ////// create a sublclass UIViewController named STANewGroupViewController
     ////// add textfield for group name
     ////// add 2 buttons for cancel and save
@@ -176,21 +179,20 @@
 - (BOOL)prefersStatusBarHidden {return YES;}
 
 
-/*
+
  // Override to support rearranging the table view.
  - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
  {
  }
- */
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+
+//
+// // Override to support conditional rearranging of the table view.
+// - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+// {
+// // Return NO if you do not want the item to be re-orderable.
+// return YES;
+// }
 
 /*
  // Override to support conditional editing of the table view.
