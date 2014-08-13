@@ -121,6 +121,7 @@
     emailTextField.placeholder = @"email";
     emailTextField.leftView = paddingView2;
     emailTextField.leftViewMode = UITextFieldViewModeAlways;
+    emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     emailTextField.delegate = self;
     [self.view addSubview:emailTextField];
     
@@ -132,6 +133,7 @@
     phoneTextField.placeholder = @"phone";
     phoneTextField.leftView = paddingView3;
     phoneTextField.leftViewMode = UITextFieldViewModeAlways;
+    phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     phoneTextField.delegate = self;
     [self.view addSubview:phoneTextField];
     

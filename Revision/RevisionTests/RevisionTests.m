@@ -26,9 +26,21 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testMyUnderstandingOfForLoops
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+   // 2 ways of doing loops
+    
+    int sum = 0; // declaring & init
+    // slow loop
+    for (int i = 0; i < 5; i++) {
+        sum = sum + 1;
+        
+        NSLog(@"Sum of integers 0 through 4 (inclusive) = %d", sum);
+        
+        XCTAssertEqual(sum, 10, @"Testing sum of ints )..4");
+    }
+    
+    NSLog(@"Hello");
 }
 
 @end

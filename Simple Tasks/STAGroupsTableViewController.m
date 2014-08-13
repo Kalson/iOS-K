@@ -170,8 +170,8 @@
 
 - (NSString *)groupFilePath
 {
-    NSArray *documemtDIrectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = documemtDIrectories[0];
+    NSArray *documemtDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = documemtDirectories[0];
     
     return  [path stringByAppendingPathComponent:@"groups.data"];
 }

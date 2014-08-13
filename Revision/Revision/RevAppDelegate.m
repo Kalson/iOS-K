@@ -8,10 +8,13 @@
 
 #import "RevAppDelegate.h"
 
+#import "RevCalculator.h"
+
 @implementation RevAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self playWithCalcultor]
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
@@ -21,5 +24,10 @@
     return YES;
 }
 
+- (void)playWithCalculator
+{
+    RevCalculator * calc = [[RevCalculator alloc]init];
+    [calc dosSomething1];
+}
 
 @end

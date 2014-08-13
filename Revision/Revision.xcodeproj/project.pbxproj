@@ -19,6 +19,7 @@
 		2611FC951993A4700031631B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2611FC7D1993A4700031631B /* UIKit.framework */; };
 		2611FC9D1993A4700031631B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2611FC9B1993A4700031631B /* InfoPlist.strings */; };
 		2611FC9F1993A4700031631B /* RevisionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2611FC9E1993A4700031631B /* RevisionTests.m */; };
+		2674A6CB1993AB2B004066E1 /* RevCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2674A6CA1993AB2B004066E1 /* RevCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		2611FC9A1993A4700031631B /* RevisionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RevisionTests-Info.plist"; sourceTree = "<group>"; };
 		2611FC9C1993A4700031631B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2611FC9E1993A4700031631B /* RevisionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RevisionTests.m; sourceTree = "<group>"; };
+		2674A6C91993AB2B004066E1 /* RevCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevCalculator.h; sourceTree = "<group>"; };
+		2674A6CA1993AB2B004066E1 /* RevCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 		2611FC6D1993A4700031631B = {
 			isa = PBXGroup;
 			children = (
+				2674A6C91993AB2B004066E1 /* RevCalculator.h */,
+				2674A6CA1993AB2B004066E1 /* RevCalculator.m */,
 				2611FC7F1993A4700031631B /* Revision */,
 				2611FC981993A4700031631B /* RevisionTests */,
 				2611FC781993A4700031631B /* Frameworks */,
@@ -242,6 +247,7 @@
 			files = (
 				2611FC8A1993A4700031631B /* RevAppDelegate.m in Sources */,
 				2611FC861993A4700031631B /* main.m in Sources */,
+				2674A6CB1993AB2B004066E1 /* RevCalculator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +444,7 @@
 				2611FCA41993A4700031631B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2611FCA51993A4700031631B /* Build configuration list for PBXNativeTarget "RevisionTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +453,7 @@
 				2611FCA71993A4700031631B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
