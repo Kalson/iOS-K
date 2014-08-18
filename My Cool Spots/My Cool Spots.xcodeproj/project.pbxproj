@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2630546D19A27EBC007F99BD /* MCSFourSqaureRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630546C19A27EBC007F99BD /* MCSFourSqaureRequest.m */; };
+		267FC1DA19A2884000100F2F /* MCSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267FC1D919A2884000100F2F /* MCSTableViewController.m */; };
+		267FC1DC19A28B5E00100F2F /* 4^2.png in Resources */ = {isa = PBXBuildFile; fileRef = 267FC1DB19A28B5E00100F2F /* 4^2.png */; };
 		26B5F36B19A2333800376EC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B5F36A19A2333800376EC7 /* Foundation.framework */; };
 		26B5F36D19A2333800376EC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B5F36C19A2333800376EC7 /* CoreGraphics.framework */; };
 		26B5F36F19A2333800376EC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B5F36E19A2333800376EC7 /* UIKit.framework */; };
@@ -39,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2630546B19A27EBC007F99BD /* MCSFourSqaureRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSFourSqaureRequest.h; path = ../MCSFourSqaureRequest.h; sourceTree = "<group>"; };
+		2630546C19A27EBC007F99BD /* MCSFourSqaureRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSFourSqaureRequest.m; path = ../MCSFourSqaureRequest.m; sourceTree = "<group>"; };
+		267FC1D819A2884000100F2F /* MCSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSTableViewController.h; sourceTree = "<group>"; };
+		267FC1D919A2884000100F2F /* MCSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSTableViewController.m; sourceTree = "<group>"; };
+		267FC1DB19A28B5E00100F2F /* 4^2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "4^2.png"; path = "../../../Desktop/4^2.png"; sourceTree = "<group>"; };
 		26B5F36719A2333800376EC7 /* My Cool Spots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Cool Spots.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B5F36A19A2333800376EC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		26B5F36C19A2333800376EC7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,12 +98,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		26B5F35E19A2333700376EC7 = {
+		263491CE19A2850F00D6D44C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				267FC1DB19A28B5E00100F2F /* 4^2.png */,
 				26B5F3A919A2491200376EC7 /* magenta.png */,
 				26B5F3A719A248FA00376EC7 /* green.png */,
 				26B5F3A519A248CC00376EC7 /* blue.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		26B5F35E19A2333700376EC7 = {
+			isa = PBXGroup;
+			children = (
+				263491CE19A2850F00D6D44C /* Images */,
 				26B5F37019A2333800376EC7 /* My Cool Spots */,
 				26B5F39219A2333800376EC7 /* My Cool SpotsTests */,
 				26B5F36919A2333800376EC7 /* Frameworks */,
@@ -130,10 +147,14 @@
 				26B5F37A19A2333800376EC7 /* MCSAppDelegate.m */,
 				26B5F37C19A2333800376EC7 /* Main_iPhone.storyboard */,
 				26B5F37F19A2333800376EC7 /* Main_iPad.storyboard */,
+				2630546B19A27EBC007F99BD /* MCSFourSqaureRequest.h */,
+				2630546C19A27EBC007F99BD /* MCSFourSqaureRequest.m */,
 				26B5F3A219A23D7B00376EC7 /* MCSAnnotation.h */,
 				26B5F3A319A23D7B00376EC7 /* MCSAnnotation.m */,
 				26B5F38219A2333800376EC7 /* MCSViewController.h */,
 				26B5F38319A2333800376EC7 /* MCSViewController.m */,
+				267FC1D819A2884000100F2F /* MCSTableViewController.h */,
+				267FC1D919A2884000100F2F /* MCSTableViewController.m */,
 				26B5F38519A2333800376EC7 /* Images.xcassets */,
 				26B5F37119A2333800376EC7 /* Supporting Files */,
 			);
@@ -252,6 +273,7 @@
 				26B5F37E19A2333800376EC7 /* Main_iPhone.storyboard in Resources */,
 				26B5F3A819A248FA00376EC7 /* green.png in Resources */,
 				26B5F37519A2333800376EC7 /* InfoPlist.strings in Resources */,
+				267FC1DC19A28B5E00100F2F /* 4^2.png in Resources */,
 				26B5F3A619A248CC00376EC7 /* blue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,9 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B5F3A419A23D7B00376EC7 /* MCSAnnotation.m in Sources */,
+				267FC1DA19A2884000100F2F /* MCSTableViewController.m in Sources */,
 				26B5F38419A2333800376EC7 /* MCSViewController.m in Sources */,
 				26B5F37B19A2333800376EC7 /* MCSAppDelegate.m in Sources */,
 				26B5F37719A2333800376EC7 /* main.m in Sources */,
+				2630546D19A27EBC007F99BD /* MCSFourSqaureRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +513,7 @@
 				26B5F39E19A2333800376EC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		26B5F39F19A2333800376EC7 /* Build configuration list for PBXNativeTarget "My Cool SpotsTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +522,7 @@
 				26B5F3A119A2333800376EC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

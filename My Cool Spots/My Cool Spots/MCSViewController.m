@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "MCSAnnotation.h"
+#import "MCSTableViewController.h"
 
 @interface MCSViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>
 
@@ -23,6 +24,8 @@
     MKMapView *myMapView;
     
     CLLocationManager * locationManager;
+    MCSTableViewController *tableViewVC;
+    
 }
 
 - (void)viewDidLoad
@@ -30,7 +33,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    myMapView = [[MKMapView alloc]initWithFrame:self.view.frame];
+    myMapView = [[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 320,SCREEN_HEIGHT/2)];
     myMapView.showsUserLocation = YES;
     myMapView.userTrackingMode = YES;
     myMapView.delegate = self;
@@ -39,6 +42,18 @@
     locationManager = [[CLLocationManager alloc]init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
+    
+    UIImageView *logo = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"4^2"]];
+    logo.frame = CGRectMake(0, 0, 50, 50);
+    logo.center = self.navigationController.navigationBar.center;
+    [self.navigationController.navigationBar addSubview:logo];
+    
+    tableViewVC = [[MCSTableViewController alloc]init];
+    tableViewVC.tableView.frame = CGRectMake(0, 240, 320, 3);
+    [self.view addSubview:tableViewVC.tableView];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -46,6 +61,10 @@
     for (CLLocation *location in locations)
     {
         NSLog(@"%f %f",location.coordinate.latitude, location.coordinate.longitude);
+        
+        
+        // call FourSquareRequest and create annotations for each venue
+        
         MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(1.0, 1.0));
         
         [myMapView setRegion:region animated:YES];
@@ -133,5 +152,7 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+
+- (BOOL)prefersStatusBarHidden{return YES;}
 
 @end

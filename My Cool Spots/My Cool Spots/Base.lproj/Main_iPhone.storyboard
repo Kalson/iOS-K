@@ -22,10 +22,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - 4-->
         <scene sceneID="sY9-yJ-fse">
             <objects>
-                <navigationController definesPresentationContext="YES" id="iyX-wc-Zhs" sceneMemberID="viewController">
+                <navigationController title="4" definesPresentationContext="YES" id="iyX-wc-Zhs" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dZf-Ca-itj">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -35,7 +35,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNe-rB-IEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-41" y="39"/>
+            <point key="canvasLocation" x="-149" y="40"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
