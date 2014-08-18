@@ -15,13 +15,13 @@
 
 #import <Parse/Parse.h>
 
-@interface TLATweetsTVC ()
+@interface TLATweetsTVC () <TLATweetCellDelegate>
 
 @end
 
 @implementation TLATweetsTVC
 {
-    NSMutableArray *tweets;
+    NSMutableArray *tweetsLikes;
    
 }
 
@@ -55,70 +55,92 @@
  
         
   
-        tweets = [@[]mutableCopy]; // fake data was inside the array
+        tweetsLikes = [@[]mutableCopy]; // fake data was inside the array
         
 //        tweets = ([self loadGroupData]) ? ([self loadGroupData]) : [@[]mutableCopy];
         
+        // request from twitter Jo's Json to parse
         AFHTTPRequestOperationManager *requestManager = [[AFHTTPRequestOperationManager alloc]init];
         [requestManager GET:@"http://jo2.co/twitter.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            // response object is an array
+            //// NEW WAY
             
-            // loop thru every item in the response object
-            // when JSON is requested
-            for (NSDictionary *tweet in responseObject)
-            {
-//                [tweets addObject:   [@{
-//                                        @"id" : tweet[@"id"],
-//                                        @"text": tweet[@"text"],
-//                                        @"hearts": @0
-//                                        }mutableCopy]];
-                
-                // this is to check if Jo's tweets already exist in the Parse database
-                PFQuery *query = [PFQuery queryWithClassName:@"Tweet"];
-//                [query whereKey:@"hearts" equalTo:@99];
-                [query whereKey:@"id" equalTo:tweet[@"id"]];
-//                query.limit = 1;
-                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    
-                    // objects is the results
-                    NSLog(@"%@",objects);
-                    
-                    // if objects.count > 0
-                    
-                    if (objects.count > 0)
-                    {
-                        // do nothing
-                    } else {
-                       // if query returns no results... save Tweet PFObject based on tweet.
-                        
-                        // this sets objects to Parse (set new objects)
-                        PFObject * tweetObject = [PFObject objectWithClassName:@"Tweet"];
-                        [tweetObject setObject:tweet[@"id"] forKey:@"id"];
-                        [tweetObject setObject:tweet[@"text"] forKey:@"text"];
-                        [tweetObject setObject:@0 forKey:@"hearts"];
-                        
-                        [tweetObject saveInBackground];
-                    }
-                    
-                }];
-            
-            }
-            
-            
-            // run query to find all objects and log objects
-            
+            // 2nd request is to query parse to get all the tweet likes available
             PFQuery * queryAll = [PFQuery queryWithClassName:@"Tweet"];
             [queryAll findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                tweets = [objects mutableCopy];
+              
+                for (NSDictionary * tweet in responseObject)
+                {
+                    BOOL tweetLikeFound = NO;
+                    
+                    for (PFObject * tweetLike in objects)
+                    {
+                        if ([tweet[@"id"] isEqual:tweetLike[@"id"]])
+                        {
+                            tweetLikeFound = YES;
+                            
+                            [tweetsLikes addObject:tweetLike];
+                        }
+                    }
+                    
+                    if (!tweetLikeFound) {
+                        PFObject *newTweetLike = [PFObject objectWithClassName:@"Tweet"];
+                        [newTweetLike setObject:tweet[@"id"] forKey:@"id"];
+                        [newTweetLike setObject:tweet[@"text"] forKey:@"text"];
+                        [newTweetLike setObject:@0 forKey:@"hearts"];
+
+                        [newTweetLike saveInBackground];
+                        
+                        [tweetsLikes addObject:newTweetLike];
+                    }
+                }
                 
-                //                [tweets addObject:[@{
-                //                                    @"id" : tweet[@"id"],
-                //                                    @"text": tweet[@"text"],
-                //                                    @"hearts": @0
-                //                                    }mutableCopy]];
                 [self.tableView reloadData];
             }];
+            
+            
+            ///// OLD WAY
+            
+//            for (NSDictionary *tweet in responseObject)
+//            {
+////                [tweets addObject:   [@{
+////                                        @"id" : tweet[@"id"],
+////                                        @"text": tweet[@"text"],
+////                                        @"hearts": @0
+////                                        }mutableCopy]];
+//                
+//                // this is to check if Jo's tweets already exist in the Parse database
+//                PFQuery *query = [PFQuery queryWithClassName:@"Tweet"];
+////                [query whereKey:@"hearts" equalTo:@99];
+//                [query whereKey:@"id" equalTo:tweet[@"id"]];
+////                query.limit = 1;
+//                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                    
+//                    // objects is the results
+//                    NSLog(@"%@",objects);
+//                    
+//                    // if objects.count > 0
+//                    
+//                    if (objects.count > 0)
+//                    {
+//                        // do nothing
+//                    } else {
+//                       // if query returns no results... save Tweet PFObject based on tweet.
+//                        
+//                        // this sets objects to Parse (set new objects)
+//                        PFObject * tweetObject = [PFObject objectWithClassName:@"Tweet"];
+//                        [tweetObject setObject:tweet[@"id"] forKey:@"id"];
+//                        [tweetObject setObject:tweet[@"text"] forKey:@"text"];
+//                        [tweetObject setObject:@0 forKey:@"hearts"];
+//                        
+//                        [tweetObject saveInBackground];
+//                    }
+//                    
+//                }];
+//            
+//            }
+//    
+       
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
@@ -180,25 +202,36 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return tweets.count;
+    return tweetsLikes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TLATweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    NSDictionary *tweet = tweets[indexPath.row];
+    PFObject *tweet = tweetsLikes[indexPath.row];
 
     // so its not null
     cell.heartCountLabel.text = (tweet[@"hearts"]) ? [NSString stringWithFormat:@"%@",tweet[@"hearts"]] : @"0";
 //    cell.heartCountLabel.text = [NSString stringWithFormat:@"%@",tweet[@"hearts"]];
     cell.tweetTextView.text = tweet[@"text"];
     
+    // set tweet
+    cell.tweet = tweet;
+    // passing the tweet property from the sublclass to the tweet
+    
+    cell.delegate = self;
+    
     NSLog(@"%@",tweet[@"text"]);
     
     // Configure the cell...
     
     return cell;
+}
+
+- (void)heartsUpdated
+{
+    [self.tableView reloadData];
 }
 
 /*
@@ -217,7 +250,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         
-        [tweets removeObjectAtIndex:indexPath.row];
+        [tweetsLikes removeObjectAtIndex:indexPath.row];
 //        [self saveGroupData];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -251,14 +284,14 @@
     if ([segue.identifier isEqualToString:@"showNewTweetVC"])
     {
         TLANewTweetVC *newTweetVC = segue.destinationViewController;
-        newTweetVC.tweets = tweets;
+        newTweetVC.tweets = tweetsLikes;
     }
     
     if ([segue.identifier isEqualToString:@"viewTweet"])
     {
         TLAViewTweetsVC *viewTweets = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        viewTweets.tweet = tweets[indexPath.row];
+        viewTweets.tweet = tweetsLikes[indexPath.row];
         
         // set textview.text = viewTweets.tweet[@"text"];
     }

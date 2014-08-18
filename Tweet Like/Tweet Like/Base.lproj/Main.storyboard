@@ -34,15 +34,20 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart.png" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-Ty-quE">
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tV9-C1-6FF">
                                             <rect key="frame" x="12" y="25" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
+                                            <state key="normal" title="Button" image="heart.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="heartTapped:" destination="BNR-kP-MDC" eventType="touchUpInside" id="s9b-T6-PzR"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="heartCountLabel" destination="rSH-qc-aqQ" id="cVc-XT-cXU"/>
-                                    <outlet property="heartImage" destination="pSo-Ty-quE" id="Ydr-qR-Fos"/>
                                     <outlet property="tweetTextView" destination="czF-Ai-5FO" id="SXd-cH-Z7J"/>
                                     <segue destination="OiV-Bo-Mfk" kind="push" identifier="viewTweet" id="0e9-pq-9dk"/>
                                 </connections>

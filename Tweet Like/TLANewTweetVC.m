@@ -8,6 +8,8 @@
 
 #import "TLANewTweetVC.h"
 
+#import <Parse/Parse.h>
+
 @interface TLANewTweetVC ()<UITextViewDelegate>
 
 @end
@@ -15,6 +17,8 @@
 @implementation TLANewTweetVC
 {
     CGPoint location;
+    
+    CGPoint swipeButtonOrigin;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,6 +42,8 @@
     
     self.greenView.layer.cornerRadius = 90;
     self.redView.layer.cornerRadius = 90;
+    
+    swipeButtonOrigin = self.saveTweet.center;
     
 }
 
@@ -74,23 +80,50 @@
 {
     CGFloat dx = center.x - point.x;
     CGFloat dy = center.y - point.y;
-    CGFloat distance = sqrt(dx * dx * dy * dy);
+    CGFloat distance = sqrt(dx * dx + dy * dy);
     return (distance < radius);
     
-    
+    //  sets the button in the green and red views
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [[event allTouches]anyObject];
-    location = [touch locationInView:self.view];
-    
-    self.saveTweet.center = location;
-}
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self touchesBegan:touches withEvent:event];
+//    [self touchesBegan:touches withEvent:event];
+    
+    UITouch *touch = [touches allObjects][0];
+    self.saveTweet.center = [touch locationInView:self.view];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches allObjects][0];
+    
+    BOOL isOnRed = [self isPoint:[touch locationInView:self.view] withInRadius:self.redView.frame.size.width / 2.0 ofPoint:self.redView.center];
+    
+    BOOL isOnGreen = [self isPoint:[touch locationInView:self.view] withInRadius:self.greenView.frame.size.width / 2.0 ofPoint:self.greenView.center];
+
+    if (isOnRed) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    } else if (isOnGreen) {
+        PFObject *newTweetLike = [PFObject objectWithClassName:@"Tweet"];
+        [newTweetLike setObject:@0 forKey:@"hearts"];
+        [newTweetLike setObject:self.tweetTextView.text forKey:@"text"];
+        [newTweetLike setObject:@(arc4random_uniform(100000000)) forKey:@"id"];
+        
+        // put a item at the beginning of the array
+        [self.tweets insertObject:newTweetLike atIndex:0];
+        [newTweetLike saveInBackground];
+        
+         [self dismissViewControllerAnimated:YES completion:nil];
+        
+    } else {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.saveTweet.center = swipeButtonOrigin;
+        }];
+    }
+    
 }
 
 //- (IBAction)saveTweet:(id)sender {

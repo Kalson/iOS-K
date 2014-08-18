@@ -8,6 +8,8 @@
 
 #import "TLATweetCell.h"
 
+#import <Parse/Parse.h>
+
 @implementation TLATweetCell
 
 
@@ -34,4 +36,15 @@
 
 }
 
+- (IBAction)heartTapped:(id)sender
+{
+    int hearts = [self.tweet[@"hearts"] intValue];
+    
+    self.tweet[@"hearts"] = @(hearts + 1);
+    
+    [self.tweet saveInBackground];
+    
+    // call a method on the delegate
+    [self.delegate heartsUpdated];
+}
 @end
