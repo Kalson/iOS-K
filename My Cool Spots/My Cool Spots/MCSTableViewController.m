@@ -46,6 +46,7 @@
                 [venues addObject:index[@"venue"][@"name"]];
             }
             NSLog(@"%d",venues.count);
+            [self.tableView reloadData];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@", error);
@@ -86,15 +87,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
+    return venues.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    
-    cell.textLabel.text = @"ddd";
+//    cell.textLabel.text = venues[indexPath.row];
+    cell.textLabel.text = venues[indexPath.row];
     
     // Configure the cell...
     
