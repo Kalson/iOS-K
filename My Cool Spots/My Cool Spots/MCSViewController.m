@@ -14,6 +14,8 @@
 
 #import "MCSAnnotation.h"
 #import "MCSTableViewController.h"
+#import "MCSFourSqaureRequest.h"
+
 
 @interface MCSViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>
 
@@ -49,11 +51,15 @@
     [self.navigationController.navigationBar addSubview:logo];
     
     tableViewVC = [[MCSTableViewController alloc]init];
-    tableViewVC.tableView.frame = CGRectMake(0, 240, 320, 3);
+    tableViewVC.tableView.frame = CGRectMake(0, SCREEN_HEIGHT/2, 320,SCREEN_HEIGHT);
     [self.view addSubview:tableViewVC.tableView];
     
+    
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-
+    
+    
+   
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -64,6 +70,7 @@
         
         
         // call FourSquareRequest and create annotations for each venue
+        
         
         MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(1.0, 1.0));
         
@@ -89,7 +96,7 @@
                 
                 for (CLPlacemark *placemark in placemarks) {
                     
-                    NSLog(@"%@",placemark.addressDictionary);
+//                    NSLog(@"%@",placemark.addressDictionary);
                     [annotation setTitle:placemark.addressDictionary[@"City"]];
                 }
 
@@ -116,7 +123,7 @@
     } else {
         MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"pin"];
         
-        NSLog(@"anotationView");
+//        NSLog(@"anotationView");
         annotationView.draggable = YES;
         
         NSArray *markers = @[

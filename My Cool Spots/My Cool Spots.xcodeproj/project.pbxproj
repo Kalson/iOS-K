@@ -29,6 +29,7 @@
 		26B5F3A619A248CC00376EC7 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 26B5F3A519A248CC00376EC7 /* blue.png */; };
 		26B5F3A819A248FA00376EC7 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 26B5F3A719A248FA00376EC7 /* green.png */; };
 		26B5F3AA19A2491200376EC7 /* magenta.png in Resources */ = {isa = PBXBuildFile; fileRef = 26B5F3A919A2491200376EC7 /* magenta.png */; };
+		406B844E4CD84B63AF80E572 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 168BE968DB834F28AD5CE153 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +43,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		168BE968DB834F28AD5CE153 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2630546B19A27EBC007F99BD /* MCSFourSqaureRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCSFourSqaureRequest.h; path = ../MCSFourSqaureRequest.h; sourceTree = "<group>"; };
 		2630546C19A27EBC007F99BD /* MCSFourSqaureRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCSFourSqaureRequest.m; path = ../MCSFourSqaureRequest.m; sourceTree = "<group>"; };
 		267FC1D819A2884000100F2F /* MCSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSTableViewController.h; sourceTree = "<group>"; };
 		267FC1D919A2884000100F2F /* MCSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSTableViewController.m; sourceTree = "<group>"; };
 		267FC1DB19A28B5E00100F2F /* 4^2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "4^2.png"; path = "../../../Desktop/4^2.png"; sourceTree = "<group>"; };
+		267FC1DD19A2ABD500100F2F /* PodFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		26B5F36719A2333800376EC7 /* My Cool Spots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Cool Spots.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B5F36A19A2333800376EC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		26B5F36C19A2333800376EC7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -72,6 +75,7 @@
 		26B5F3A519A248CC00376EC7 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue.png; path = "../../../Downloads/Map Location Pins/PNG/blue.png"; sourceTree = "<group>"; };
 		26B5F3A719A248FA00376EC7 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = "../../../Downloads/Map Location Pins/PNG/green.png"; sourceTree = "<group>"; };
 		26B5F3A919A2491200376EC7 /* magenta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = magenta.png; path = "../../../Downloads/Map Location Pins/PNG/magenta.png"; sourceTree = "<group>"; };
+		F872CCED365F400E99072B91 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				26B5F36D19A2333800376EC7 /* CoreGraphics.framework in Frameworks */,
 				26B5F36F19A2333800376EC7 /* UIKit.framework in Frameworks */,
 				26B5F36B19A2333800376EC7 /* Foundation.framework in Frameworks */,
+				406B844E4CD84B63AF80E572 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,16 +112,18 @@
 				26B5F3A519A248CC00376EC7 /* blue.png */,
 			);
 			name = Images;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		26B5F35E19A2333700376EC7 = {
 			isa = PBXGroup;
 			children = (
-				263491CE19A2850F00D6D44C /* Images */,
+				267FC1DD19A2ABD500100F2F /* PodFile */,
 				26B5F37019A2333800376EC7 /* My Cool Spots */,
 				26B5F39219A2333800376EC7 /* My Cool SpotsTests */,
 				26B5F36919A2333800376EC7 /* Frameworks */,
 				26B5F36819A2333800376EC7 /* Products */,
+				F872CCED365F400E99072B91 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +143,7 @@
 				26B5F36C19A2333800376EC7 /* CoreGraphics.framework */,
 				26B5F36E19A2333800376EC7 /* UIKit.framework */,
 				26B5F38C19A2333800376EC7 /* XCTest.framework */,
+				168BE968DB834F28AD5CE153 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,6 +151,7 @@
 		26B5F37019A2333800376EC7 /* My Cool Spots */ = {
 			isa = PBXGroup;
 			children = (
+				263491CE19A2850F00D6D44C /* Images */,
 				26B5F37919A2333800376EC7 /* MCSAppDelegate.h */,
 				26B5F37A19A2333800376EC7 /* MCSAppDelegate.m */,
 				26B5F37C19A2333800376EC7 /* Main_iPhone.storyboard */,
@@ -197,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26B5F39C19A2333800376EC7 /* Build configuration list for PBXNativeTarget "My Cool Spots" */;
 			buildPhases = (
+				8A0405F29DE7411886B099F6 /* Check Pods Manifest.lock */,
 				26B5F36319A2333800376EC7 /* Sources */,
 				26B5F36419A2333800376EC7 /* Frameworks */,
 				26B5F36519A2333800376EC7 /* Resources */,
+				A0E41D63B40845D5AC9D9FAE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +298,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A0405F29DE7411886B099F6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A0E41D63B40845D5AC9D9FAE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26B5F36319A2333800376EC7 /* Sources */ = {
@@ -430,6 +474,7 @@
 		};
 		26B5F39D19A2333800376EC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F872CCED365F400E99072B91 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -443,6 +488,7 @@
 		};
 		26B5F39E19A2333800376EC7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F872CCED365F400E99072B91 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

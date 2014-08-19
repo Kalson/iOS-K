@@ -8,17 +8,52 @@
 
 #import "MCSTableViewController.h"
 
+#import <AFNetworking/AFNetworking.h>
+
 @interface MCSTableViewController ()
 
 @end
 
 @implementation MCSTableViewController
+{
+    NSMutableArray *venues;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
+        self.tableView.rowHeight = 60;
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        self.tableView.separatorColor = [UIColor cyanColor];
+        
+//        NSMutableArray *groups = [[NSMutableArray alloc]init];
+        
+        
+        AFHTTPRequestOperationManager *requestManager = [[AFHTTPRequestOperationManager alloc]init];
+        
+        [requestManager GET:@"https://api.foursquare.com/v2/venues/explore?oauth_token=XKO4L3TQREFJP4ANRXSXQLME4NBIXIS5FDIPVLZAWXGYGYBA&v=20140818&ll=37.785834,-122.406417" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+//            NSLog(@"location = %@",responseObject[@"response"][@"groups"][0][@"items"][0][@"venue"][@"name"]);
+            
+            venues = [@[]mutableCopy];
+            
+            // access the indexes of the items
+            for (NSDictionary *index in responseObject[@"response"][@"groups"][0][@"items"]) {
+                // add objects to the venues
+                [venues addObject:index[@"venue"][@"name"]];
+            }
+            NSLog(@"%d",venues.count);
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@", error);
+        }];
+        
+        
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+
     }
     return self;
 }
@@ -40,30 +75,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 0;
-}
+//#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    // Return the number of sections.
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return 10;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    
+    cell.textLabel.text = @"ddd";
     
     // Configure the cell...
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
