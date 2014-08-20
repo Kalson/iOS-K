@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		260BE77D19A38C9800CE6225 /* MSARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 260BE77C19A38C9800CE6225 /* MSARequest.m */; };
+		2624E28F19A41C1C0009BC7A /* MSAData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2624E28E19A41C1C0009BC7A /* MSAData.m */; };
 		26BF000C19A3871400FF21BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BF000B19A3871400FF21BD /* Foundation.framework */; };
 		26BF000E19A3871400FF21BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BF000D19A3871400FF21BD /* CoreGraphics.framework */; };
 		26BF001019A3871400FF21BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BF000F19A3871400FF21BD /* UIKit.framework */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		260BE77B19A38C9800CE6225 /* MSARequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSARequest.h; sourceTree = "<group>"; };
 		260BE77C19A38C9800CE6225 /* MSARequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSARequest.m; sourceTree = "<group>"; };
+		2624E28D19A41C1C0009BC7A /* MSAData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAData.h; sourceTree = "<group>"; };
+		2624E28E19A41C1C0009BC7A /* MSAData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAData.m; sourceTree = "<group>"; };
 		26BF000819A3871400FF21BD /* Mayorships.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mayorships.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BF000B19A3871400FF21BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		26BF000D19A3871400FF21BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,6 +95,15 @@
 				260BE77C19A38C9800CE6225 /* MSARequest.m */,
 			);
 			name = Random;
+			sourceTree = "<group>";
+		};
+		2624E28C19A3DF220009BC7A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2624E28D19A41C1C0009BC7A /* MSAData.h */,
+				2624E28E19A41C1C0009BC7A /* MSAData.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		26BF000919A3871400FF21BD /* Products */ = {
@@ -163,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				260BE77E19A38C9E00CE6225 /* Random */,
+				2624E28C19A3DF220009BC7A /* Data */,
 				26BF001119A3871400FF21BD /* Mayorships */,
 				26BF003319A3871400FF21BD /* MayorshipsTests */,
 				26BF000A19A3871400FF21BD /* Frameworks */,
@@ -269,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26BF002519A3871400FF21BD /* MSASecondViewController.m in Sources */,
+				2624E28F19A41C1C0009BC7A /* MSAData.m in Sources */,
 				260BE77D19A38C9800CE6225 /* MSARequest.m in Sources */,
 				26BF001C19A3871400FF21BD /* MSAAppDelegate.m in Sources */,
 				26BF001819A3871400FF21BD /* main.m in Sources */,

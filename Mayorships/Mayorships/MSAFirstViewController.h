@@ -10,6 +10,5 @@
 
 @interface MSAFirstViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *mayorList;
-@property (weak, nonatomic) IBOutlet UIView *image;
 
 @end

@@ -27,20 +27,15 @@
     NSArray *venues = [MSARequest findVenuesWithLocation:location];
     
     NSMutableArray *mayors = [@[]mutableCopy];
-    NSMutableArray *photos = [@[]mutableCopy];
 
     
     for (NSDictionary *venue in venues) {
         NSString *endpoint = [NSString stringWithFormat:@"venues/%@",venue[@"id"]];
         
         NSDictionary *venueInfo = [MSARequest foursquareRequestWithEndpoints:endpoint andParameters:@{}];
-        
         NSDictionary *mayor = venueInfo[@"response"][@"venue"][@"mayor"];
         
-        NSDictionary *photo = venueInfo[@"response"][@"venue"][@"mayor"];
-        
         [mayors addObject:mayor];
-        [photos addObject:photo];
     }
 
     
@@ -58,6 +53,8 @@
     // no self in a class method
     // self is only use instance method
 }
+
+
 
 + (NSDictionary *)foursquareRequestWithEndpoints:(NSString *)endpoint andParameters:(NSDictionary *)parameters
 {

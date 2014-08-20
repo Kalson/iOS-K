@@ -21,8 +21,7 @@
 @implementation MSAFirstViewController
 {
     NSArray *mayorships;
-    NSArray *images;
-    
+ 
     CLLocationManager *locationManager;
 }
 
@@ -35,12 +34,12 @@
     self.mayorList.dataSource = self;
     self.mayorList.delegate = self;
     
+    self.mayorList.rowHeight = 50;
+    
     locationManager = [[CLLocationManager alloc]init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-    
-    self.image = [UIImage imageNamed:<#(NSString *)#>]
-    
+        
     
 }
 
@@ -50,7 +49,6 @@
      [locationManager stopUpdatingLocation];
     
     mayorships = [MSARequest findMayorshipsWithLocation:location];
-    images = [MSARequest findMayorshipsWithLocation:location];
     [self.mayorList reloadData];
    
 
@@ -68,6 +66,13 @@
     
     NSDictionary *mayor = mayorships[indexPath.row];
     cell.textLabel.text = mayor[@"user"][@"firstName"];
+    
+    // setting the image to table view
+    NSString *urlString = [NSString stringWithFormat:@"%@100x100%@",mayor[@"user"][@"photo"][@"prefix"],mayor[@"user"][@"photo"][@"suffix"]];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    cell.imageView.image = [UIImage imageWithData:data];
+    
 
     return cell;
 }
