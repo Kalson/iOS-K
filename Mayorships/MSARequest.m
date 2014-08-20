@@ -21,34 +21,50 @@
 
 @implementation MSARequest
 
-+ (NSArray *)findMayorshipsWithLocation:(CLLocation *)location
+//+ (NSArray *)findMayorshipsWithLocation:(CLLocation *)location
++ (void)findMayorshipsWithLocation:(CLLocation *)location completion:(void (^)(NSArray * mayors))completion
 {
     
-    NSArray *venues = [MSARequest findVenuesWithLocation:location];
-    
-    NSMutableArray *mayors = [@[]mutableCopy];
-
-    
-    for (NSDictionary *venue in venues) {
-        NSString *endpoint = [NSString stringWithFormat:@"venues/%@",venue[@"id"]];
+//    NSArray *venues = [MSARequest findVenuesWithLocation:location];
+    [MSARequest findVenuesWithLocation:location completion:^(NSArray *venues)
+    {
+        NSMutableArray *mayors = [@[]mutableCopy];
         
-        NSDictionary *venueInfo = [MSARequest foursquareRequestWithEndpoints:endpoint andParameters:@{}];
-        NSDictionary *mayor = venueInfo[@"response"][@"venue"][@"mayor"];
+        for (NSDictionary *venue in venues) {
+            NSString *endpoint = [NSString stringWithFormat:@"venues/%@",venue[@"id"]];
+            
+            //        NSDictionary *venueInfo = [MSARequest foursquareRequestWithEndpoints:endpoint andParameters:@{}];
+            
+            [MSARequest foursquareRequestWithEndpoints:endpoint andParameters:@{} completion:^(NSDictionary *responseInfo)
+             {
+                 NSDictionary *mayor = responseInfo[@"response"][@"venue"][@"mayor"];
+                 
+                if(mayor) [mayors addObject:mayor];
+                 
+                  if (completion) completion(mayors);
+                 
+             }];
+            
+        }
         
-        [mayors addObject:mayor];
-    }
+        //    return mayors;
 
+        
+    }];
     
-    return mayors;
-}
+   }
 
-+ (NSArray *)findVenuesWithLocation:(CLLocation *)location
++ (void)findVenuesWithLocation:(CLLocation *)location completion:(void(^)(NSArray * venues))completion
 {
     NSDictionary *parameters = @{
                                  @"ll": [NSString stringWithFormat:@"%f,%f",location.coordinate.latitude,location.coordinate.longitude]
                                  };
     
-    return [MSARequest foursquareRequestWithEndpoints:@"venues/search" andParameters:parameters][@"response"][@"venues"];
+    [MSARequest foursquareRequestWithEndpoints:@"venues/search" andParameters:parameters completion:^(NSDictionary *responseInfo) {
+        if (completion) completion(responseInfo[@"response"][@"venues"]);
+    }];
+    
+//    return [MSARequest foursquareRequestWithEndpoints:@"venues/search" andParameters:parameters][@"response"][@"venues"];
     
     // no self in a class method
     // self is only use instance method
@@ -56,7 +72,7 @@
 
 
 
-+ (NSDictionary *)foursquareRequestWithEndpoints:(NSString *)endpoint andParameters:(NSDictionary *)parameters
++ (void)foursquareRequestWithEndpoints:(NSString *)endpoint andParameters:(NSDictionary *)parameters completion:(void(^)(NSDictionary * responseInfo))completion
 {
     NSMutableString *requestString = [[API stringByAppendingString:endpoint]mutableCopy];
     [requestString appendString:[NSString stringWithFormat:@"?client_id=%@&client_secret=%@&v=20140819",CLIENT_ID,CLIENT_SECRET]];
@@ -73,15 +89,20 @@
     NSURL *requestURL = [NSURL URLWithString:requestString];
     NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
     
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        // need to serilize the data
+        NSDictionary *responseInfo = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if (completion) completion(responseInfo);
+    }];
     
-    // need to serilize the data
-    NSDictionary *responseInfo = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-    
-    NSLog(@" response = %@",responseInfo);
+   
+//    NSLog(@" response = %@",responseInfo);
     
     // need to turn a dictionary to a string
     
-    return responseInfo;
+//    return responseInfo;
 }
 @end

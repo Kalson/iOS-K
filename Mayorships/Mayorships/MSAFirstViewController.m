@@ -48,8 +48,20 @@
     CLLocation *location = locations[0];
      [locationManager stopUpdatingLocation];
     
-    mayorships = [MSARequest findMayorshipsWithLocation:location];
-    [self.mayorList reloadData];
+//    mayorships = [MSARequest findMayorshipsWithLocation:location];
+    
+    [MSARequest findMayorshipsWithLocation:location completion:^(NSArray * mayors)
+    {
+        // get the block ready and holding for later use
+        // to call after its ran somewhere
+        // run when the method chooses to uses it
+        mayorships = mayors;
+        [self.mayorList reloadData];
+        
+        
+    }];
+    
+    
    
 
 }
@@ -65,16 +77,45 @@
     UITableViewCell *cell = [self.mayorList dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     NSDictionary *mayor = mayorships[indexPath.row];
+    
+    NSString *photoURL = [NSString stringWithFormat:@"%@100x100%@",mayor[@"user"][@"photo"][@"prefix"],mayor[@"user"][@"photo"][@"suffix"]];
+    NSURL *url = [NSURL URLWithString:photoURL];
+    
+    NSString *documentDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",mayor[@"user"][@"id"]]];
+    
+    BOOL fileExist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    
+    if (!fileExist)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            // setting the image to table view
+            
+            // datawithcontents makes the request
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            // save the files
+            [data writeToFile:filePath atomically:YES];
+            
+            NSLog(@"file request: %@",photoURL);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.imageView.image = [UIImage imageWithData:data];
+            });
+            
+            
+            // create a UIView if you want to postition the images within the tableview cell
+            
+            // can't put a UI Stuff on a side thread (dispatch_async)
+        });
+    } else {
+        
+        cell.imageView.image = [UIImage imageWithContentsOfFile:filePath];
+
+    }
+    
     cell.textLabel.text = mayor[@"user"][@"firstName"];
     
-    // setting the image to table view
-    NSString *urlString = [NSString stringWithFormat:@"%@100x100%@",mayor[@"user"][@"photo"][@"prefix"],mayor[@"user"][@"photo"][@"suffix"]];
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    cell.imageView.image = [UIImage imageWithData:data];
-    
-
-    return cell;
+  return cell;
 }
 
 - (void)didReceiveMemoryWarning
