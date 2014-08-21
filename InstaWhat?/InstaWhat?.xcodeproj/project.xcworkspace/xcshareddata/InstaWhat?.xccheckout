@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4C9A821E-BF5B-4027-859A-CAC07F231C3A</string>
+	<string>24C15222-D919-4DEF-B367-6DCE9C52F948</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Simple Tasks</string>
+	<string>InstaWhat?</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A07C2B2A8594227667791F30B67252658CF103F1</key>
 		<string>https://github.com/Kalson/iOS-K.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Simple Tasks/Simple Tasks.xcodeproj/project.xcworkspace</string>
+	<string>InstaWhat?/InstaWhat?.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A07C2B2A8594227667791F30B67252658CF103F1</key>
