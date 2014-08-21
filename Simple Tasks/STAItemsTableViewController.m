@@ -52,10 +52,10 @@
 
 - (void)newItemClicked
 {
-    STANewItemViewController *newGroupVC = [[STANewItemViewController alloc]init];
-    [self.navigationController presentViewController:newGroupVC animated:YES completion:nil];
+    STANewItemViewController *newItemVC = [[STANewItemViewController alloc]init];
+    [self.navigationController presentViewController:newItemVC animated:YES completion:nil];
     
-     newGroupVC.itemInfo = self.groupInfo[@"items"];
+     newItemVC.itemInfo = self.groupInfo[@"items"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,15 +108,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    STAEditViewController *ItemVC = [[STAEditViewController alloc]init];
+    STAEditViewController *editItemVC = [[STAEditViewController alloc]init];
     
     NSNumber *priorityHue = self.groupInfo[@"items"][indexPath.row][@"priority"];
     float priority = [priorityHue floatValue] / 360;
-    ItemVC.view.backgroundColor = [UIColor colorWithHue:priority saturation:1.0 brightness:1.0 alpha:1.0];
+    editItemVC.view.backgroundColor = [UIColor colorWithHue:priority saturation:1.0 brightness:1.0 alpha:1.0];
     
-    ItemVC.itemInfo = self.groupInfo[@"items"][indexPath.row];
+    editItemVC.itemInfo = self.groupInfo[@"items"][indexPath.row];
     
-    [self.navigationController pushViewController:ItemVC animated:YES];
+    [self.navigationController pushViewController:editItemVC animated:YES];
 
 //   editItemVC.itemInfo = self.groupInfo[@"items"][indexPath.row];
 }
