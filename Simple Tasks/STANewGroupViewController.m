@@ -98,7 +98,7 @@
 - (void)saveButtonWasCLicked{
     [self.groups addObject:[@{
                               @"name": newGroupTextField.text,
-                              @"items": [@[] mutableCopy]
+                              @"items": [@[] mutableCopy]  // this is for the 2nd array
                               } mutableCopy]];
     [self dismissViewControllerAnimated:YES completion:nil];
  
