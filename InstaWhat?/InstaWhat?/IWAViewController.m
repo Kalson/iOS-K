@@ -53,6 +53,7 @@
     layout.itemSize = CGSizeMake(100, 100);
     
     UICollectionView *photoCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 320, 320, [UIScreen mainScreen].bounds.size.height - 320) collectionViewLayout:layout];
+    photoCollection.backgroundColor = [UIColor lightGrayColor];
     
     [photoCollection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
@@ -80,14 +81,17 @@
         
     }];
     
-    UIButton *takePictureButton = [[UIButton alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width/2)-50, 280, 100, 100)];
+    // the button must be added to the subview last - (so the sequence will be the last)
+    
+    UIButton *takePictureButton = [[UIButton alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width/2)-45, 280, 90, 90)];
     takePictureButton.backgroundColor = [UIColor orangeColor];
-    takePictureButton.layer.cornerRadius = 50;
+    takePictureButton.layer.cornerRadius = 45;
     takePictureButton.layer.borderColor = [[UIColor whiteColor]CGColor];
     takePictureButton.layer.borderWidth = 2;
     [takePictureButton addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:takePictureButton];
+    
     
 
 }

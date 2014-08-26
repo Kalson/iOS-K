@@ -8,13 +8,16 @@
 
 #import "IWASaveFilterController.h"
 
-@interface IWASaveFilterController ()
+#import <Parse/Parse.h>
+
+@interface IWASaveFilterController ()<UITextViewDelegate>
 
 @end
 
 @implementation IWASaveFilterController
 {
     UIImageView *imageView;
+    UIView *captionHolder;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,11 +31,41 @@
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.view addSubview:imageView];
         
-        UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 320, 320, [UIScreen mainScreen].bounds.size.height - 320)];
-        [self.view addSubview:textView];
+       
+//        [self.view addSubview:textView];
         
+        captionHolder = [[UIView alloc]initWithFrame:CGRectMake(0, 310, 320,[UIScreen mainScreen].bounds.size.height - 310 )];
+        captionHolder.backgroundColor = [UIColor lightGrayColor];
+        captionHolder.layer.borderWidth = 10;
+        captionHolder.layer.borderColor = [[UIColor whiteColor]CGColor];
+        [self.view addSubview:captionHolder];
+        
+        UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(20, 20, 280, captionHolder.frame.size.height - 70)];
+        textView.delegate = self;
+        [captionHolder addSubview:textView];
+        
+        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake(20, captionHolder.frame.size.height - 60, 280, 40)];
+        submitButton.backgroundColor = [UIColor orangeColor];
+        [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+        submitButton.titleLabel.font = [UIFont systemFontOfSize:25];
+        [submitButton addTarget:self action:@selector(saveFace) forControlEvents:UIControlEventTouchUpInside];
+        [captionHolder addSubview:submitButton];
     }
     return self;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    // moves the textView Up
+    [UIView animateWithDuration:0.2 animations:^{
+        captionHolder.center = CGPointMake(captionHolder.center.x, captionHolder.center.y - 216);
+        
+    }];
+}
+
+- (void)saveFace
+{
+    PFObject *face = [PFObject objectWithClassName:@"Faces"];
 }
 
 - (void)setFilteredImage:(UIImage *)filteredImage
@@ -53,16 +86,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
