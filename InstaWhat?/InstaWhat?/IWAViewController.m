@@ -7,6 +7,8 @@
 //
 
 #import "IWAViewController.h"
+#import "IWAFilterViewController.h"
+
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface IWAViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource,UICollectionViewDelegate>
@@ -109,14 +111,17 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIImageView *bigView = [[UIImageView alloc]initWithFrame:imagepicker.view.frame];
+//    UIImageView *bigView = [[UIImageView alloc]initWithFrame:imagepicker.view.frame];
     ALAsset *photo = photos[indexPath.item];
     
     ALAssetRepresentation *representation = photo.defaultRepresentation;
     
-    bigView.image = [UIImage imageWithCGImage:representation.fullResolutionImage];
-    
-    [self.view addSubview:bigView];
+//    bigView.image = [UIImage imageWithCGImage:representation.fullResolutionImage];
+//    
+//    [self.view addSubview:bigView];
+//    
+    // push vcontroller
+    [self showFilterWithImage:[UIImage imageWithCGImage:representation.fullResolutionImage]];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -126,9 +131,24 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.view.frame];
-    imageView.image = info[UIImagePickerControllerOriginalImage];
-    [self.view addSubview:imageView];
+//    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.view.frame];
+//    imageView.image = info[UIImagePickerControllerOriginalImage];
+//    [self.view addSubview:imageView];
+    
+    // push vcontroller
+    [self showFilterWithImage:info[UIImagePickerControllerOriginalImage]];
+
+}
+
+- (void)showFilterWithImage:(UIImage *)image
+{
+    IWAFilterViewController *filterVC = [[IWAFilterViewController alloc]init];
+    
+    // you init, then you set -> filterVC.origialImage
+    filterVC.origialImage = image;
+    // pass the property to the "image"
+    
+    [self.navigationController pushViewController:filterVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
