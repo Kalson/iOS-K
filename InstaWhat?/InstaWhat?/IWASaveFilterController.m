@@ -18,6 +18,7 @@
 {
     UIImageView *imageView;
     UIView *captionHolder;
+    UITextView *captionView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,9 +41,9 @@
         captionHolder.layer.borderColor = [[UIColor whiteColor]CGColor];
         [self.view addSubview:captionHolder];
         
-        UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(20, 20, 280, captionHolder.frame.size.height - 70)];
-        textView.delegate = self;
-        [captionHolder addSubview:textView];
+        captionView = [[UITextView alloc]initWithFrame:CGRectMake(20, 20, 280, captionHolder.frame.size.height - 70)];
+        captionView.delegate = self;
+        [captionHolder addSubview:captionView];
         
         UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake(20, captionHolder.frame.size.height - 60, 280, 40)];
         submitButton.backgroundColor = [UIColor orangeColor];
@@ -63,9 +64,27 @@
     }];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 - (void)saveFace
 {
     PFObject *face = [PFObject objectWithClassName:@"Faces"];
+    [face setObject:captionView.text forKey:@"text"];
+    
+    NSData *data = UIImagePNGRepresentation(imageView.image);
+    
+    PFFile *file = [PFFile fileWithData:data];
+    [face setObject:file forKey:@"image"];
+    [face saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+    {
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"faceSaved" object:nil];
+    }];
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)setFilteredImage:(UIImage *)filteredImage

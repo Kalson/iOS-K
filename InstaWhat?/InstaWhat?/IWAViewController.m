@@ -32,13 +32,15 @@
     
     imagepicker = [[UIImagePickerController alloc]init];
     imagepicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagepicker.view.frame = CGRectMake(0, 0, 320, 320);
+    imagepicker.view.frame = CGRectMake(10, 0, 300, 310);
     imagepicker.showsCameraControls = NO;
     imagepicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
     imagepicker.delegate = self;
     // to start camera when launch add to subview
     [self.view addSubview:imagepicker.view];
     [self addChildViewController:imagepicker];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     
 //    [self.view addSubview:takePictureButton];
@@ -50,10 +52,14 @@
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     
-    layout.itemSize = CGSizeMake(100, 100);
+    layout.itemSize = CGSizeMake(95, 95);
+    layout.minimumInteritemSpacing = 1;
     
-    UICollectionView *photoCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 320, 320, [UIScreen mainScreen].bounds.size.height - 320) collectionViewLayout:layout];
-    photoCollection.backgroundColor = [UIColor lightGrayColor];
+    // can you put a border on layouts?
+    // can a textview have a placeholder?
+    
+    UICollectionView *photoCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(10, 320, 300, [UIScreen mainScreen].bounds.size.height - 320) collectionViewLayout:layout];
+    photoCollection.backgroundColor = [UIColor whiteColor];
     
     [photoCollection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
@@ -83,11 +89,11 @@
     
     // the button must be added to the subview last - (so the sequence will be the last)
     
-    UIButton *takePictureButton = [[UIButton alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width/2)-45, 280, 90, 90)];
+    UIButton *takePictureButton = [[UIButton alloc]initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width/2)-45, 260, 90, 90)];
     takePictureButton.backgroundColor = [UIColor orangeColor];
     takePictureButton.layer.cornerRadius = 45;
     takePictureButton.layer.borderColor = [[UIColor whiteColor]CGColor];
-    takePictureButton.layer.borderWidth = 2;
+    takePictureButton.layer.borderWidth = 5;
     [takePictureButton addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:takePictureButton];

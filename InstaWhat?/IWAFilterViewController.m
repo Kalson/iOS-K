@@ -62,9 +62,11 @@
 //        filterArray = [@[]mutableCopy];
         filterDictionary = [@{}mutableCopy];
         
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 320)];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 300, 310)];
+//        imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.view addSubview:imageView];
+        
+        self.view.backgroundColor = [UIColor whiteColor];
         
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.itemSize = CGSizeMake(100, 100);
@@ -72,6 +74,7 @@
         filterCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 320, 320, [UIScreen mainScreen].bounds.size.height - 320) collectionViewLayout:layout];
         filterCollection.dataSource = self;
         filterCollection.delegate = self;
+        filterCollection.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:filterCollection];
         
         [filterCollection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
