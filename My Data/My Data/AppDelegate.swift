@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
-    // MARK: - Core Data stack
+    // MARK: - Core Data Code
 
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "KaL.My_Data" in the application's documents Application Support directory.
@@ -94,6 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
+    
+    // manage object context is the doer
+    // persistentStoreCoordinator holds the stuff
 
     func saveContext () {
         if let moc = self.managedObjectContext {
