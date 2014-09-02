@@ -34,16 +34,6 @@
                                     <action selector="postNew:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gTz-by-DzW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cRE-Zs-UUi">
-                                <rect key="frame" x="116" y="233" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Get All Posts">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getAllPosts:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aLm-zo-2hu"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Kt-8g-CUF">
                                 <rect key="frame" x="114" y="188" width="93" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -52,6 +42,16 @@
                                 </state>
                                 <connections>
                                     <action selector="getMyPosts:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YVQ-iO-P7a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cRE-Zs-UUi">
+                                <rect key="frame" x="116" y="226" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Get All Posts">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getAllPosts:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aLm-zo-2hu"/>
                                 </connections>
                             </button>
                         </subviews>

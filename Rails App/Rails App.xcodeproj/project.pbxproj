@@ -395,6 +395,7 @@
 				269B6A8A19B5F97C00F592CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		269B6A8B19B5F97C00F592CE /* Build configuration list for PBXNativeTarget "Rails AppTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +404,7 @@
 				269B6A8D19B5F97C00F592CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
