@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
     
     // manage object context is the doer
-    // persistentStoreCoordinator holds the stuff
+    // persistentStoreCoordinator holds the stuff (its b/w manageobjectcontext and the database)
 
     func saveContext () {
         if let moc = self.managedObjectContext {
