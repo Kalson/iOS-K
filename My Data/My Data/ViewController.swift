@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var contentField: UITextField!
     
+    let info: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)!
+
     
     
     @IBAction func postNew(sender: AnyObject) {
@@ -44,13 +46,13 @@ class ViewController: UIViewController {
             
             
             // converts the json data to object C objects
-            let info: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)!
+//            let info: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)!
             
             // ? make the object optional
             // an optonal is a wrapper bool value (true or false(bool value), to check if it there or not. if there is a value (its true)
             // ! pulls it out of the optional
             
-            println(info)
+            println(self.info)
             
         }
     }
@@ -113,6 +115,8 @@ class ViewController: UIViewController {
         postObject.setValue("This is a cool title", forKey: "title")
         
         ////// new stuff
+        
+        postObject.setValue(info?.objectForKey("user"), forKey: "user")
 
         appD.saveContext()
         
