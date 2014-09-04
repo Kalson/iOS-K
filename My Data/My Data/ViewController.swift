@@ -20,10 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var contentField: UITextField!
     
-    let info: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)!
-
-    
-    
     @IBAction func postNew(sender: AnyObject) {
         
         // urlstring connecting to post
@@ -43,16 +39,16 @@ class ViewController: UIViewController {
         // makes the connection request
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             
-            
-            
             // converts the json data to object C objects
-//            let info: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)!
+            let info: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)!
+            
+            //// loop through here somewhere (i think)
             
             // ? make the object optional
             // an optonal is a wrapper bool value (true or false(bool value), to check if it there or not. if there is a value (its true)
             // ! pulls it out of the optional
             
-            println(self.info)
+            println(info)
             
         }
     }
@@ -106,9 +102,9 @@ class ViewController: UIViewController {
         var appD = UIApplication.sharedApplication().delegate as AppDelegate
         
         // entity (is like a data table) holds all your data
-        var entity = NSEntityDescription.entityForName("Post", inManagedObjectContext: appD.managedObjectContext)
+        var entity = NSEntityDescription.entityForName("Post", inManagedObjectContext: appD.managedObjectContext!)
 
-        var postObject = NSEntityDescription.insertNewObjectForEntityForName("Post", inManagedObjectContext: appD.managedObjectContext) as NSManagedObject
+        var postObject = NSEntityDescription.insertNewObjectForEntityForName("Post", inManagedObjectContext: appD.managedObjectContext!) as NSManagedObject
         
         // set the structure before, now were set the values
         postObject.setValue("jo@theironyard.com", forKey: "user")
@@ -116,7 +112,7 @@ class ViewController: UIViewController {
         
         ////// new stuff
         
-        postObject.setValue(info?.objectForKey("user"), forKey: "user")
+//        postObject.setValue(info?.objectForKey("user"), forKey: "user")
 
         appD.saveContext()
         
