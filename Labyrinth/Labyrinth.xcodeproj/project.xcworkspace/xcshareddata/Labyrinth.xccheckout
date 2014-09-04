@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B2F1E770-FA66-4EE2-8175-2DBB35728650</string>
+	<string>A487115D-9368-421C-92DA-E532FB9032AD</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Tweet Like</string>
+	<string>Labyrinth</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A07C2B2A8594227667791F30B67252658CF103F1</key>
 		<string>https://github.com/Kalson/iOS-K.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Tweet Like/Tweet Like.xcodeproj/project.xcworkspace</string>
+	<string>Labyrinth/Labyrinth.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A07C2B2A8594227667791F30B67252658CF103F1</key>
