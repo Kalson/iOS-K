@@ -57,9 +57,12 @@
             [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
         }
     }
-    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                     UIRemoteNotificationTypeAlert |
-                                                     UIRemoteNotificationTypeSound)];
+//    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+//                                                     UIRemoteNotificationTypeAlert |
+//                                                     UIRemoteNotificationTypeSound)];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     return YES;
 }
 
