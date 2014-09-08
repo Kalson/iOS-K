@@ -39,5 +39,11 @@
     PFQuery *deviceQuery = [PFInstallation query];
     // to find in a specific device a specific user
     [deviceQuery whereKey:@"user" matchesQuery:userQuery];
+    
+    // running a push based on the device
+    PFPush *pushMessage = [PFPush push];
+    [pushMessage setQuery:deviceQuery];
+    [pushMessage setMessage:self.messageField.text];
+    [pushMessage sendPushInBackground]; // send push async
 }
 @end
