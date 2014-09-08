@@ -32,6 +32,15 @@
     // ****************************************************************************
 
     [PFUser enableAutomaticUser];
+    
+    // installation shows how many devices have it installed
+    
+    // these 3 lines creates a user
+    PFInstallation *device = [PFInstallation currentInstallation];
+    device[@"user"] = [PFUser currentUser];
+    [device saveInBackground];
+    
+    
 
     PFACL *defaultACL = [PFACL ACL];
 
