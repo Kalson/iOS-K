@@ -8,5 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ParseStarterProjectViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *messageField;
+- (IBAction)sendMessage:(id)sender;
 
 @end

@@ -30,4 +30,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)sendMessage:(id)sender {
+    PFQuery *userQuery = [PFUser query];
+    // everybody else
+    [userQuery whereKey:@"username" notEqualTo:[PFUser currentUser][@"username"]];
+    
+    // now to push to another device
+    PFQuery *deviceQuery = [PFInstallation query];
+    // to find in a specific device a specific user
+    [deviceQuery whereKey:@"user" matchesQuery:userQuery];
+}
 @end
