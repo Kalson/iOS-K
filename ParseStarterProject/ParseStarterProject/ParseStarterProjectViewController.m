@@ -16,6 +16,11 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    UINavigationController *navC = (UINavigationController *)[self.navigationController presentingViewController];
+//    // presentingViewController thinks its a view controller
+//    navC.viewControllers
+    
 }
 
 - (void)didReceiveMemoryWarning {

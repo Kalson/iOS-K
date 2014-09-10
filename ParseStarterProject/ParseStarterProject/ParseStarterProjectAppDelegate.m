@@ -39,8 +39,7 @@
     PFInstallation *device = [PFInstallation currentInstallation];
     device[@"user"] = [PFUser currentUser];
     [device saveInBackground];
-    
-    
+        
 
     PFACL *defaultACL = [PFACL ACL];
 

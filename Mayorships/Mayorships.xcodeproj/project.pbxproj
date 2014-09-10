@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		260BE77D19A38C9800CE6225 /* MSARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 260BE77C19A38C9800CE6225 /* MSARequest.m */; };
 		2624E28F19A41C1C0009BC7A /* MSAData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2624E28E19A41C1C0009BC7A /* MSAData.m */; };
-		269FF45819A4DCAD000FBD3B /* game@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 269FF45719A4DCAD000FBD3B /* game@2x.png */; };
 		26BF000C19A3871400FF21BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BF000B19A3871400FF21BD /* Foundation.framework */; };
 		26BF000E19A3871400FF21BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BF000D19A3871400FF21BD /* CoreGraphics.framework */; };
 		26BF001019A3871400FF21BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BF000F19A3871400FF21BD /* UIKit.framework */; };
@@ -42,7 +41,6 @@
 		260BE77C19A38C9800CE6225 /* MSARequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSARequest.m; sourceTree = "<group>"; };
 		2624E28D19A41C1C0009BC7A /* MSAData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAData.h; sourceTree = "<group>"; };
 		2624E28E19A41C1C0009BC7A /* MSAData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAData.m; sourceTree = "<group>"; };
-		269FF45719A4DCAD000FBD3B /* game@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "game@2x.png"; path = "../../../Downloads/game@2x.png"; sourceTree = "<group>"; };
 		26BF000819A3871400FF21BD /* Mayorships.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mayorships.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BF000B19A3871400FF21BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		26BF000D19A3871400FF21BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,7 +174,6 @@
 		26BFFFFF19A3871400FF21BD = {
 			isa = PBXGroup;
 			children = (
-				269FF45719A4DCAD000FBD3B /* game@2x.png */,
 				260BE77E19A38C9E00CE6225 /* Random */,
 				2624E28C19A3DF220009BC7A /* Data */,
 				26BF001119A3871400FF21BD /* Mayorships */,
@@ -264,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				26BF002719A3871400FF21BD /* Images.xcassets in Resources */,
-				269FF45819A4DCAD000FBD3B /* game@2x.png in Resources */,
 				26BF001619A3871400FF21BD /* InfoPlist.strings in Resources */,
 				26BF001F19A3871400FF21BD /* Main.storyboard in Resources */,
 			);
