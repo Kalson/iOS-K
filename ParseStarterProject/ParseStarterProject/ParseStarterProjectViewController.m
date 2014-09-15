@@ -50,5 +50,6 @@
     [pushMessage setQuery:deviceQuery];
     [pushMessage setMessage:self.messageField.text];
     [pushMessage sendPushInBackground]; // send push async
+    
 }
 @end
