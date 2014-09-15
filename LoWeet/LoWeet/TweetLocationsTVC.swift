@@ -28,27 +28,33 @@ class TweetLocationsTVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return LocationData.mainData().locations.count
     }
 
-    /*
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("tweetLocationCell", forIndexPath: indexPath) as TweetLocationTVCell
+        
+        var tweetlocation = LocationData.mainData().locations[indexPath.row]
+        
+        if let tweet:AnyObject = tweetlocation["tweet"]{
+            cell.tweetTextView.text = tweetlocation["tweet"]! as String  // why is the value of the key an optional other than vice-versa
+            
+        }
+        
+        // swift Dictionaries and Arrays are faster because things like anyobject make it faster than when ObjC NSArray and NSDictionary
+        
+        // anything ur unwrapping, u should test
+        
+        
+        // can turn an optional into a string, but u can change the value of an object into a string
 
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -21,26 +21,33 @@ class NewLocationVC: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        println(CLLocationManager.authorizationStatus().hashValue)
+        
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined
+        {
+            locationManager.requestWhenInUseAuthorization()
+//            CLLocationManager.locationServicesEnabled()
+        }
         
         // singleton lets use something everywhere, w/o actually passing it
     }
     
     @IBAction func saveNewLocation() {
         
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
         
+        // always ask for permission or authorization when using Location Services
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
         for location in locations {
             currentCoordinate = (location as CLLocation).coordinate
-            
-        }
+                    }
         
     }
 
