@@ -31,6 +31,7 @@ class LocationData: NSObject {
     func addLocation(location:[String:AnyObject]){
         self.locations += [location] // add location to the array
         
+        // fires the notification
         let nC = NSNotificationCenter.defaultCenter()
         nC.postNotificationName("tweetLocationsUpdated", object: nil, userInfo: nil)
 
@@ -40,3 +41,5 @@ class LocationData: NSObject {
 
 // in swift have to use [String:AnyObject] so we know what's inside it
 // locationData.mainData() is the same as _location
+
+// notification is when one piece talking to another piece of code

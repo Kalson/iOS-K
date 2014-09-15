@@ -12,6 +12,17 @@ class TweetLocationsTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nC = NSNotificationCenter.defaultCenter()
+        
+        // defaultcenter is the singleton, so were accessing the same defaultcenter
+        
+        // listens for the notification being fired
+        nC.addObserverForName("tweetLocationsUpdated", object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+            
+            self.tableView.reloadData()
+            
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
