@@ -9,20 +9,38 @@
 import UIKit
 import CoreLocation
 
-class NewLocationVC: UIViewController {
+class NewLocationVC: UIViewController,CLLocationManagerDelegate {
 
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var tweetTextView: UITextView!
     
-    let locationManager = CLLocationManager
+    let locationManager = CLLocationManager()
+    
+    var currentCoordinate: CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // singleton lets use something everywhere, w/o actually passing it
     }
     
     @IBAction func saveNewLocation() {
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        
+        for location in locations {
+            currentCoordinate = (location as CLLocation).coordinate
+            
+        }
         
     }
 
