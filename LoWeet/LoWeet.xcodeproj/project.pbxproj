@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		269C1AEF19C734E500CD8783 /* NewLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269C1AEE19C734E500CD8783 /* NewLocationVC.swift */; };
 		26B77A5119C71CE800A40560 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A5019C71CE800A40560 /* AppDelegate.swift */; };
-		26B77A5319C71CE800A40560 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A5219C71CE800A40560 /* FirstViewController.swift */; };
-		26B77A5519C71CE800A40560 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A5419C71CE800A40560 /* SecondViewController.swift */; };
 		26B77A5819C71CE800A40560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B77A5619C71CE800A40560 /* Main.storyboard */; };
 		26B77A5A19C71CE800A40560 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B77A5919C71CE800A40560 /* Images.xcassets */; };
 		26B77A5D19C71CE800A40560 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B77A5B19C71CE800A40560 /* LaunchScreen.xib */; };
 		26B77A6919C71CE800A40560 /* LoWeetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A6819C71CE800A40560 /* LoWeetTests.swift */; };
+		26B77A7319C7216E00A40560 /* TweetLocationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7219C7216E00A40560 /* TweetLocationTVCell.swift */; };
+		26B77A7519C721DE00A40560 /* MapLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7419C721DE00A40560 /* MapLocationsVC.swift */; };
+		26B77A7719C721FB00A40560 /* TweetLocationsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7619C721FB00A40560 /* TweetLocationsTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +29,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		269C1AEE19C734E500CD8783 /* NewLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLocationVC.swift; sourceTree = "<group>"; };
 		26B77A4B19C71CE800A40560 /* LoWeet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoWeet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B77A4F19C71CE800A40560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B77A5019C71CE800A40560 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		26B77A5219C71CE800A40560 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		26B77A5419C71CE800A40560 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		26B77A5719C71CE800A40560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26B77A5919C71CE800A40560 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		26B77A5C19C71CE800A40560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		26B77A6219C71CE800A40560 /* LoWeetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoWeetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B77A6719C71CE800A40560 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B77A6819C71CE800A40560 /* LoWeetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoWeetTests.swift; sourceTree = "<group>"; };
+		26B77A7219C7216E00A40560 /* TweetLocationTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetLocationTVCell.swift; sourceTree = "<group>"; };
+		26B77A7419C721DE00A40560 /* MapLocationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationsVC.swift; sourceTree = "<group>"; };
+		26B77A7619C721FB00A40560 /* TweetLocationsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetLocationsTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				26B77A5019C71CE800A40560 /* AppDelegate.swift */,
-				26B77A5219C71CE800A40560 /* FirstViewController.swift */,
-				26B77A5419C71CE800A40560 /* SecondViewController.swift */,
 				26B77A5619C71CE800A40560 /* Main.storyboard */,
 				26B77A5919C71CE800A40560 /* Images.xcassets */,
 				26B77A5B19C71CE800A40560 /* LaunchScreen.xib */,
 				26B77A4E19C71CE800A40560 /* Supporting Files */,
+				26B77A7219C7216E00A40560 /* TweetLocationTVCell.swift */,
+				26B77A7419C721DE00A40560 /* MapLocationsVC.swift */,
+				26B77A7619C721FB00A40560 /* TweetLocationsTVC.swift */,
+				269C1AEE19C734E500CD8783 /* NewLocationVC.swift */,
 			);
 			path = LoWeet;
 			sourceTree = "<group>";
@@ -215,9 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B77A5519C71CE800A40560 /* SecondViewController.swift in Sources */,
+				269C1AEF19C734E500CD8783 /* NewLocationVC.swift in Sources */,
+				26B77A7719C721FB00A40560 /* TweetLocationsTVC.swift in Sources */,
+				26B77A7519C721DE00A40560 /* MapLocationsVC.swift in Sources */,
+				26B77A7319C7216E00A40560 /* TweetLocationTVCell.swift in Sources */,
 				26B77A5119C71CE800A40560 /* AppDelegate.swift in Sources */,
-				26B77A5319C71CE800A40560 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +417,7 @@
 				26B77A6E19C71CE800A40560 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		26B77A6F19C71CE800A40560 /* Build configuration list for PBXNativeTarget "LoWeetTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +426,7 @@
 				26B77A7119C71CE800A40560 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
