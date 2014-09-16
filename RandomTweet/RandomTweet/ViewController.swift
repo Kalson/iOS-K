@@ -28,10 +28,27 @@ class ViewController: UIViewController {
         
             if granted {
                 let twitterAccounts = accountStore.accountsWithAccountType(accountType)
-                
-                let twitterAccount = twitterAccounts[0] as ACAccount
+                let twitterAccount = twitterAccounts[2] as ACAccount
                 
                 self.swifter = Swifter(account: twitterAccount)
+                
+                self.swifter.postStatusUpdate("Im posting from an app that I built w/ the new swifter framework #iOS #swift", inReplyToStatusID: nil, lat: nil, long: nil, placeID: nil, displayCoordinates: false, trimUser: false, success: { (status) -> Void in
+                    
+                }, failure: { (error) -> Void in
+                    
+                })
+                
+                
+                
+//                self.swifter.getStatusesHomeTimelineWithCount(5, sinceID: nil, maxID: nil, trimUser: true, contributorDetails: true, includeEntities: true, success: { (statuses) -> Void in
+//                    
+//                    println(statuses)
+//                    
+//                }, failure: { (error) -> Void in
+//                    
+//                    println(error)
+//                    
+//                })
         
                 println(twitterAccounts)
                 
