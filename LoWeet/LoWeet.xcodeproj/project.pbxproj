@@ -17,6 +17,7 @@
 		26B77A7319C7216E00A40560 /* TweetLocationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7219C7216E00A40560 /* TweetLocationTVCell.swift */; };
 		26B77A7519C721DE00A40560 /* MapLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7419C721DE00A40560 /* MapLocationsVC.swift */; };
 		26B77A7719C721FB00A40560 /* TweetLocationsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7619C721FB00A40560 /* TweetLocationsTVC.swift */; };
+		26E2D81319C76E5D00A5DB49 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D81219C76E5D00A5DB49 /* Marker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		26B77A7219C7216E00A40560 /* TweetLocationTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetLocationTVCell.swift; sourceTree = "<group>"; };
 		26B77A7419C721DE00A40560 /* MapLocationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocationsVC.swift; sourceTree = "<group>"; };
 		26B77A7619C721FB00A40560 /* TweetLocationsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetLocationsTVC.swift; sourceTree = "<group>"; };
+		26E2D81219C76E5D00A5DB49 /* Marker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				26B77A7619C721FB00A40560 /* TweetLocationsTVC.swift */,
 				269C1AEE19C734E500CD8783 /* NewLocationVC.swift */,
 				269C1AF019C73A5800CD8783 /* LocationData.swift */,
+				26E2D81219C76E5D00A5DB49 /* Marker.swift */,
 			);
 			path = LoWeet;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				26B77A7519C721DE00A40560 /* MapLocationsVC.swift in Sources */,
 				26B77A7319C7216E00A40560 /* TweetLocationTVCell.swift in Sources */,
 				26B77A5119C71CE800A40560 /* AppDelegate.swift in Sources */,
+				26E2D81319C76E5D00A5DB49 /* Marker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,13 @@
 //  Copyright (c) 2014 KaL. All rights reserved.
 //
 
+/// add STTwitter framework to Xcode project (found on Github)
+/// add touch to map to drop pin and show a "new tweet location" form like the plus button
+/// make pins draggable and chance location for item when dropped
+/// make a test Twitter account and sign in on your device
+/// run some test tweets using STTwitter in your app
+
+
 import UIKit
 
 let _locationData: LocationData = {
@@ -31,7 +38,7 @@ class LocationData: NSObject {
     func addLocation(location:[String:AnyObject]){
         self.locations += [location] // add location to the array
         
-        // fires the notification
+        // fires the notification (the singleton fires the notification)
         let nC = NSNotificationCenter.defaultCenter()
         nC.postNotificationName("tweetLocationsUpdated", object: nil, userInfo: nil)
 

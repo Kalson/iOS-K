@@ -22,11 +22,47 @@ class MapLocationsVC: UIViewController {
         // still have to import the main core libaries (xcode does not to it, becuase it would be too slow)
         
         // start in any, any so you make all devices work easier
+        
+        let nC = NSNotificationCenter.defaultCenter()
+        
+        // defaultcenter is the singleton, so were accessing the same defaultcenter
+        
+        // and this VC listens for the notification being fired
+        nC.addObserverForName("tweetLocationsUpdated", object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
+            
+            self.markUpTheMap()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func markUpTheMap()
+    {
+        // want to call this everytime we have a new location
+        
+        // were gonna loop thru every locations
+        for location in LocationData.mainData().locations{
+            var marker = Marker()
+            
+//            Marker.coordinate = CLLocationCoordinate2D(latitude: location["latitude"], longitude: location["longitude"])
+            
+            var coordinate = CLLocationCoordinate2D(latitude: location["latitude"]! as CLLocationDegrees,
+                longitude: location["longitude"]! as CLLocationDegrees)
+            
+            marker.setCoordinate(coordinate)
+            
+            self.locationsMapView.addAnnotation(marker)
+            // the mapView than runs the getter method
+            
+            println(locationsMapView)
+            
+            
+        }
+        
+     
     }
     
 

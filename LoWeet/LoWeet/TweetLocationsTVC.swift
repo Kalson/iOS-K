@@ -17,7 +17,7 @@ class TweetLocationsTVC: UITableViewController {
         
         // defaultcenter is the singleton, so were accessing the same defaultcenter
         
-        // listens for the notification being fired
+        // and this TVC listens for the notification being fired
         nC.addObserverForName("tweetLocationsUpdated", object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
             
             self.tableView.reloadData()

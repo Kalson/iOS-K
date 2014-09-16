@@ -16,54 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="B8d-R3-MdE">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </mapView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6Fc-qe-2l1">
                                 <rect key="frame" x="0.0" y="-49" width="600" height="600"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="B8d-R3-MdE" firstAttribute="top" secondItem="2V5-3J-H1x" secondAttribute="top" id="4yW-AI-jVO"/>
                             <constraint firstAttribute="trailing" secondItem="6Fc-qe-2l1" secondAttribute="trailing" id="Foj-H6-pyO"/>
-                            <constraint firstItem="B8d-R3-MdE" firstAttribute="leading" secondItem="2V5-3J-H1x" secondAttribute="leading" id="FyN-XH-PJJ"/>
-                            <constraint firstAttribute="bottom" secondItem="B8d-R3-MdE" secondAttribute="bottom" id="RZB-3c-mkX"/>
                             <constraint firstItem="v9Y-gw-Vt4" firstAttribute="top" secondItem="6Fc-qe-2l1" secondAttribute="bottom" id="X72-SU-Ubw"/>
-                            <constraint firstAttribute="trailing" secondItem="B8d-R3-MdE" secondAttribute="trailing" id="Yva-si-CR3"/>
                             <constraint firstItem="6Fc-qe-2l1" firstAttribute="leading" secondItem="2V5-3J-H1x" secondAttribute="leading" id="fZG-Oj-SPV"/>
                             <constraint firstItem="6Fc-qe-2l1" firstAttribute="top" secondItem="2V5-3J-H1x" secondAttribute="top" id="ytQ-56-buu"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="B8d-R3-MdE"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="4yW-AI-jVO"/>
-                                <exclude reference="FyN-XH-PJJ"/>
-                                <exclude reference="RZB-3c-mkX"/>
-                                <exclude reference="Yva-si-CR3"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=regular">
-                            <mask key="subviews">
-                                <include reference="B8d-R3-MdE"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="4yW-AI-jVO"/>
-                                <include reference="FyN-XH-PJJ"/>
-                                <include reference="RZB-3c-mkX"/>
-                                <include reference="Yva-si-CR3"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
-                        <outlet property="locationsMapView" destination="B8d-R3-MdE" id="269-Cn-nPA"/>
+                        <outlet property="locationsMapView" destination="6Fc-qe-2l1" id="lIJ-w2-WUA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzq-vx-fUE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2153" y="-36"/>
+            <point key="canvasLocation" x="2153" y="-34"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="4hb-fa-1Ld">
@@ -132,7 +103,7 @@
                                             </connections>
                                         </button>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ney-mW-bKF">
-                                            <rect key="frame" x="19" y="27" width="522" height="70"/>
+                                            <rect key="frame" x="19" y="28" width="522" height="78"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <string key="text">Some kinds of tweet Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -174,7 +145,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVr-aK-P4E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2894" y="-760"/>
+            <point key="canvasLocation" x="2894" y="-761"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="juz-X6-txF">
