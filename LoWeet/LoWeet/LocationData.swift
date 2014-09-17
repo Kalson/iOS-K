@@ -14,6 +14,7 @@
 
 
 import UIKit
+//import SwifteriOS
 
 let _locationData: LocationData = {
     LocationData()

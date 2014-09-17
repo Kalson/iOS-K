@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SwifteriOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>26B77A6119C71CE800A40560</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>26EA76B219C9C5730080B657</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>26EA76BC19C9C5730080B657</key>
 		<dict>
 			<key>primary</key>
 			<true/>
