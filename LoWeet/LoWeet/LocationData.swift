@@ -31,7 +31,7 @@ class LocationData: NSObject, CLLocationManagerDelegate {
     // singletons are optional b/c they may or be there
     
     var tweetLocations: [[String:AnyObject]] = [] // creates an empty array of dictionary
-    var f
+    var foundLocations: [[String:AnyObject]] = []
     
     // create class method
     class func mainData() -> LocationData {
