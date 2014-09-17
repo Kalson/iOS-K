@@ -44,7 +44,7 @@ class MapLocationsVC: UIViewController {
         // want to call this everytime we have a new location
         
         // were gonna loop thru every locations
-        for location in LocationData.mainData().locations{
+        for location in LocationData.mainData().tweetLocations{
             var marker = Marker()
             
 //            Marker.coordinate = CLLocationCoordinate2D(latitude: location["latitude"], longitude: location["longitude"])

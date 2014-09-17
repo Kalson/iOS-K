@@ -1,28 +1,17 @@
 //
-//  TweetLocationsTVC.swift
+//  FoundLocationTVC.swift
 //  LoWeet
 //
-//  Created by KaL on 9/15/14.
+//  Created by KaL on 9/17/14.
 //  Copyright (c) 2014 KaL. All rights reserved.
 //
 
 import UIKit
 
-class TweetLocationsTVC: UITableViewController {
+class FoundLocationTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let nC = NSNotificationCenter.defaultCenter()
-        
-        // defaultcenter is the singleton, so were accessing the same defaultcenter
-        
-        // and this TVC listens for the notification being fired
-        nC.addObserverForName("tweetLocationsUpdated", object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification!) -> Void in
-            
-            self.tableView.reloadData()
-            
-        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -31,7 +20,6 @@ class TweetLocationsTVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,30 +30,18 @@ class TweetLocationsTVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return LocationData.mainData().tweetLocations.count
+        return 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tweetLocationCell", forIndexPath: indexPath) as TweetLocationTVCell
-        
-        var tweetlocation = LocationData.mainData().tweetLocations[indexPath.row]
-        
-        if let tweet:AnyObject = tweetlocation["tweet"]{
-            cell.tweetTextView.text = tweetlocation["tweet"]! as String  // why is the value of the key an optional other than vice-versa
-            
-        }
-        
-        // swift Dictionaries and Arrays are faster because things like anyobject make it faster than when ObjC NSArray and NSDictionary
-        
-        // anything ur unwrapping, u should test
-        
-        
-        // can turn an optional into a string, but u can change the value of an object into a string
+    /*
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
 
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.

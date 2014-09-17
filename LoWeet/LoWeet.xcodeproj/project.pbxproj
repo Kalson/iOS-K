@@ -18,6 +18,7 @@
 		26B77A7519C721DE00A40560 /* MapLocationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7419C721DE00A40560 /* MapLocationsVC.swift */; };
 		26B77A7719C721FB00A40560 /* TweetLocationsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B77A7619C721FB00A40560 /* TweetLocationsTVC.swift */; };
 		26E2D81319C76E5D00A5DB49 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D81219C76E5D00A5DB49 /* Marker.swift */; };
+		26EA76F319C9E2460080B657 /* FoundLocationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EA76F219C9E2460080B657 /* FoundLocationTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		26EA76EC19C9C7210080B657 /* Dictionary+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Swifter.swift"; sourceTree = "<group>"; };
 		26EA76ED19C9C7210080B657 /* NSURL+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Swifter.swift"; sourceTree = "<group>"; };
 		26EA76EE19C9C7210080B657 /* String+Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Swifter.swift"; sourceTree = "<group>"; };
+		26EA76F219C9E2460080B657 /* FoundLocationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundLocationTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				269C1AEE19C734E500CD8783 /* NewLocationVC.swift */,
 				269C1AF019C73A5800CD8783 /* LocationData.swift */,
 				26E2D81219C76E5D00A5DB49 /* Marker.swift */,
+				26EA76F219C9E2460080B657 /* FoundLocationTVC.swift */,
 			);
 			path = LoWeet;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				269C1AF119C73A5800CD8783 /* LocationData.swift in Sources */,
 				269C1AEF19C734E500CD8783 /* NewLocationVC.swift in Sources */,
 				26B77A7719C721FB00A40560 /* TweetLocationsTVC.swift in Sources */,
+				26EA76F319C9E2460080B657 /* FoundLocationTVC.swift in Sources */,
 				26B77A7519C721DE00A40560 /* MapLocationsVC.swift in Sources */,
 				26B77A7319C7216E00A40560 /* TweetLocationTVCell.swift in Sources */,
 				26B77A5119C71CE800A40560 /* AppDelegate.swift in Sources */,
