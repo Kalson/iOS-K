@@ -50,10 +50,10 @@
 		2646F049199D39F6004B3395 /* LabyrinthTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LabyrinthTests-Info.plist"; sourceTree = "<group>"; };
 		2646F04B199D39F6004B3395 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2646F04D199D39F6004B3395 /* LabyrinthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabyrinthTests.m; sourceTree = "<group>"; };
-		2646F057199D3A02004B3395 /* LABViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LABViewController.h; sourceTree = "<group>"; };
-		2646F058199D3A02004B3395 /* LABViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LABViewController.m; sourceTree = "<group>"; };
-		2646F05A199D3CEE004B3395 /* LABGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LABGraphView.h; sourceTree = "<group>"; };
-		2646F05B199D3CEE004B3395 /* LABGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LABGraphView.m; sourceTree = "<group>"; };
+		2646F057199D3A02004B3395 /* LABViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LABViewController.h; path = Labyrinth/LABViewController.h; sourceTree = "<group>"; };
+		2646F058199D3A02004B3395 /* LABViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LABViewController.m; path = Labyrinth/LABViewController.m; sourceTree = "<group>"; };
+		2646F05A199D3CEE004B3395 /* LABGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LABGraphView.h; path = Labyrinth/LABGraphView.h; sourceTree = "<group>"; };
+		2646F05B199D3CEE004B3395 /* LABGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LABGraphView.m; path = Labyrinth/LABGraphView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +459,7 @@
 				2646F053199D39F6004B3395 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2646F054199D39F6004B3395 /* Build configuration list for PBXNativeTarget "LabyrinthTests" */ = {
 			isa = XCConfigurationList;
@@ -467,6 +468,7 @@
 				2646F056199D39F6004B3395 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
